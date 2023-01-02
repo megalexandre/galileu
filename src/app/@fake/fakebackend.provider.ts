@@ -18,7 +18,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url, method, } = request;
 
-
       switch (true) {
 
         case url.includes(environment.management.router) && method === 'GET':{

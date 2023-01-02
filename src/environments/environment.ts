@@ -2,16 +2,16 @@ export const environment = {
   production: false,
 
   management: {
-    router: '/management'
+    router: '/management',
   },
 
-  dashboard:{
+  dashboard: {
     routers: {
       planAccount:
       {
         synthetic: '/synthetic',
-        analytical : '/analytical'
-      }
-    }
-  }
+        analytical : '/analytical',
+      },
+    },
+  },
 };
