@@ -1,32 +1,42 @@
+
 <nb-flip-card>
 
-  <nb-card-front>
-    <nb-card>
+  <nb-card-front [nbSpinner]="!loadedSyntheticDistribution">
+    <nb-card  >
+
       <nb-card-header>
         <span>
-          <nb-icon icon="question-mark-circle-outline" pack="eva"></nb-icon>
-            Distribuição de caixa sintetico
-          </span>
+          Distribuição de caixa sintetico
+        </span>
 
-          <nb-select [selected]="'MÊS'">
-            <nb-option *ngFor="let t of ['SEMANA','MÊS']" [value]="t">{{ t }}</nb-option>
-          </nb-select>
-
+        <nb-select [selected]="currentMonth" (selectedChange)="filterSyntheticDistribution($event)">
+          <nb-option *ngFor="let m of monthOfYear" [value]="m">{{ m }}</nb-option>
+        </nb-select>
       </nb-card-header>
+
       <nb-card-body>
-        <ng-container *ngIf="analyticalDistribution?.length">
-          <ngx-chart-pie [itens]="analyticalDistribution"></ngx-chart-pie>
+        <ng-container *ngIf="syntheticDistribution?.length && loadedSyntheticDistribution">
+          <ngx-chart-pie [itens]="syntheticDistribution"></ngx-chart-pie>
         </ng-container>
       </nb-card-body>
     </nb-card>
   </nb-card-front>
 
   <nb-card-back>
-    <nb-card>
-      <nb-card-header>Distribuição de caixa analitico</nb-card-header>
+    <nb-card [nbSpinner]="!loadedAnalyticalDistribution">
+      <nb-card-header>
+        <span>
+          Distribuição de caixa analitico
+        </span>
+
+        <nb-select [selected]="currentMonth" (selectedChange)="filterAnalyticalDistribution($event)">
+          <nb-option *ngFor="let m of monthOfYear" [value]="m">{{ m }}</nb-option>
+        </nb-select>
+      </nb-card-header>
+
       <nb-card-body>
-        <ng-container *ngIf="syntheticDistribution?.length">
-          <ngx-chart-pie [itens]="syntheticDistribution"></ngx-chart-pie>
+        <ng-container *ngIf="analyticalDistribution?.length && loadedAnalyticalDistribution">
+          <ngx-chart-pie [itens]="analyticalDistribution"></ngx-chart-pie>
         </ng-container>
       </nb-card-body>
     </nb-card>

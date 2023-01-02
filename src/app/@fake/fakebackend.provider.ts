@@ -26,11 +26,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         case url.includes(environment.dashboard.routers.planAccount.analytical) && method === 'GET':{
-          return this.ok(planAccount.planAcount.synthetic.data)
+          return this.ok(getRandonData(planAccount.planAcount.analytical.data))
         }
 
         case url.includes(environment.dashboard.routers.planAccount.synthetic) && method === 'GET':{
-          return this.ok(planAccount.planAcount.analytical.data)
+          return this.ok(getRandonData(planAccount.planAcount.synthetic.data))
         }
 
         default:
@@ -47,7 +47,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 function getRandonData(barItem: BarItem[]): BarItem[]{
   return barItem.map(b => ({
     name: b.name,
-    value: getRandomArbitrary(b.value)
+    value: getRandomArbitrary(0,100)
   }))
 }
 

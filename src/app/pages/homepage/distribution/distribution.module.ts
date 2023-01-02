@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DistributionComponent } from './distribution.component';
-import { NbCardModule, NbSelectModule, NbIconModule } from '@nebular/theme';
+import { NbCardModule, NbSelectModule, NbIconModule, NbSpinnerModule } from '@nebular/theme';
 import { LibraryModule } from 'app/@library/library.module';
 import { DistributionService } from './distribution.service';
 
@@ -12,7 +12,7 @@ import { DistributionService } from './distribution.service';
     NbCardModule,
     NbSelectModule,
     NbIconModule,
-
+    NbSpinnerModule,
   ],
   declarations: [
     DistributionComponent

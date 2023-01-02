@@ -18,8 +18,6 @@ export class ChartPieComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    console.log()
-    console.log(this.itens[0].name)
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors = config.variables;
@@ -35,8 +33,8 @@ export class ChartPieComponent implements AfterViewInit, OnDestroy {
         },
 
         legend: {
-          orient: 'vertical',
-          left: 'left',
+          type: 'scroll',
+          orient: 'horizontal',
           data: this.itens.map(i => i.name),
           textStyle: {
             color: echarts.textColor,
