@@ -15,14 +15,14 @@ import { DistributionService } from './distribution.service';
     NbSpinnerModule,
   ],
   declarations: [
-    DistributionComponent
+    DistributionComponent,
   ],
-  exports:[
-    DistributionComponent
+  exports: [
+    DistributionComponent,
   ],
-  providers:[
+  providers: [
     DistributionService,
-  ]
+  ],
 
 })
 export class DistributionModule { }

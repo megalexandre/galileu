@@ -9,7 +9,7 @@ describe('ManagementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManagementComponent ]
+      declarations: [ ManagementComponent ],
     })
     .compileComponents();
   });

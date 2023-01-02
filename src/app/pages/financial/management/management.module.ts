@@ -11,13 +11,13 @@ import { ManagementService } from './management.service';
     NbCardModule,
     NbListModule,
     NbSelectModule,
-    ManagementRoutingModule
+    ManagementRoutingModule,
   ],
   declarations: [
-    ManagementComponent
+    ManagementComponent,
   ],
-  providers:[
+  providers: [
     ManagementService,
-  ]
+  ],
 })
 export class ManagementModule { }

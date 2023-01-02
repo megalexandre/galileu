@@ -23,12 +23,12 @@ export class DistributionService {
     return this.http.get<BarItem[]>(`${environment.dashboard.routers.planAccount}`);
   }
 
-  getCurrentMonth(): string{
-    return 'Janeiro'
+  getCurrentMonth(): string {
+    return 'Janeiro';
   }
 
-  getMonthsOfYear(): string[]{
-    return months
+  getMonthsOfYear(): string[] {
+    return months;
   }
 
 

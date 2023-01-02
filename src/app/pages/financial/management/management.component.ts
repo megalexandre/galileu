@@ -14,14 +14,14 @@ export class ManagementComponent implements OnInit {
   constructor(private managementService: ManagementService ) { }
 
   ngOnInit(): void {
-    this.load()
+    this.load();
   }
 
-  private load(){
+  private load() {
     this.managementService.find().subscribe(
       transactions => {
         this.transactions = transactions;
-      }
+      },
     );
   }
 

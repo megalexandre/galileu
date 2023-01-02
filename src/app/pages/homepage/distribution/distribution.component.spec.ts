@@ -8,7 +8,7 @@ describe('DistributionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DistributionComponent ]
+      declarations: [ DistributionComponent ],
     })
     .compileComponents();
   });

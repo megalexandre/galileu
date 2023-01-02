@@ -3,8 +3,9 @@
     "tslint.enable": true,
 
     "editor.codeActionsOnSave": {
+
       "source.fixAll": true,
       "source.fixAll.eslint": true,
   },
-
+  "eslint.validate": ["javascript"]
 }

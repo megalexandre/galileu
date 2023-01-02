@@ -1,4 +1,5 @@
 {
+
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "src",
@@ -27,5 +28,9 @@
     "plugins": [
       { "name": "tslint-language-service"}
     ]
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "preserveWhitespaces": true,
   }
 }

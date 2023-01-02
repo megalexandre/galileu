@@ -10,14 +10,14 @@ import {
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
-  NbWindowModule
+  NbWindowModule,
 } from '@nebular/theme';
 import { CoreModule } from './@core/core.module';
 import { FakeBackendInterceptor } from './@fake/fakebackend.provider';
 import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-registerLocaleData(ptBr)
+registerLocaleData(ptBr);
 
 
 @NgModule({
@@ -38,7 +38,7 @@ registerLocaleData(ptBr)
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
-    { provide: LOCALE_ID, useValue: 'pt-PT' }
+    { provide: LOCALE_ID, useValue: 'pt-PT' },
   ],
   bootstrap: [AppComponent],
 })

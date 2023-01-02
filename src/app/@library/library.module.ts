@@ -19,7 +19,7 @@ import { ChartPieComponent } from './chart/chart-pie.component';
     ChartPieAdvancedComponent,
     ChartPieComponent,
   ],
-  exports:[
+  exports: [
     ChartPieAdvancedComponent,
     ChartPieComponent,
   ],

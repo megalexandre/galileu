@@ -7,10 +7,10 @@ import { ThemeModule } from '../../@theme/theme.module';
 @NgModule({
   imports: [
     ThemeModule,
-    FinancialRoutingModule
+    FinancialRoutingModule,
   ],
   declarations: [
-    FinancialComponent
+    FinancialComponent,
   ],
 })
 export class FinancialModule { }

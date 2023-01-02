@@ -10,7 +10,7 @@ enum Month {
   september = 'Setembro',
   october = 'Outubro',
   november = 'Novembro',
-  december = 'Dezembro'
+  december = 'Dezembro',
 }
 
 export const months = Object.values(Month);

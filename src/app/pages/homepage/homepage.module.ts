@@ -18,8 +18,8 @@ import { HomepageService } from './homepage.service';
     HomepageComponent,
   ],
 
-  providers:[
+  providers: [
     HomepageService,
-  ]
+  ],
 })
 export class HomepageModule { }
