@@ -1,0 +1,35 @@
+{
+  "planAcount":{
+
+    "synthetic":
+      {
+        "data":[
+          { "name": "CUSTO", "date": "2020-01-01", "value": 300, "type": "cost" },
+          { "name": "DESPESA", "date": "2020-01-01", "value": 1600, "type": "costs" },
+          { "name": "PASSIVO", "date": "2020-01-01", "value": 759, "type": "costs" }
+        ],
+        "range":{
+          "min": 0,
+          "max": 100
+        }
+    },
+
+    "analytical":{
+      "data": [
+        { "name": "PAGAMENTO DE FOLHA", "date": "2020-01-01", "value": 300, "type": "cost" },
+        { "name": "ELETRICIDADE", "date": "2020-01-01", "value": 1600, "type": "costs" },
+        { "name": "LINK", "date": "2020-01-01", "value": 759, "type": "costs" },
+        { "name": "JURO SOBRE EMPRESTIMO", "date": "2020-01-01", "value": 900, "type": "liabilities" },
+        { "name": "GASOLINA", "date": "2020-01-01", "value": 100, "type": "Expenditure" },
+        { "name": "ALMOÇO", "date": "2020-01-01", "value":50, "type": "Expenditure" }
+      ],
+      "range":{
+        "min": 0,
+        "max": 10000
+      }
+    }
+
+  }
+
+
+}
