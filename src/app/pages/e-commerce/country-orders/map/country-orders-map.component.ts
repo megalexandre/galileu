@@ -19,7 +19,7 @@ export class CountryOrdersMapComponent implements OnDestroy {
 
   @Input() countryId: string;
 
-  @Output() select: EventEmitter<any> = new EventEmitter();
+  @Output() selectDom: EventEmitter<any> = new EventEmitter();
 
   layers = [];
   currentTheme: any;

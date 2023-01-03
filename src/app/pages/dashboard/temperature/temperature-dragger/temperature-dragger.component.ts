@@ -35,7 +35,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
   value = 50;
   @Output() valueChange = new EventEmitter<Number>();
-  @Input('value') set setValue(value) {
+  @Input() set setValue(value) {
     this.value = value;
   }
 
