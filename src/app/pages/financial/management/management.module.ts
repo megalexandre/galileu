@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NbCardModule, NbListModule, NbSelectModule } from '@nebular/theme';
+import { NbCardModule, NbIconModule, NbListModule, NbSelectModule } from '@nebular/theme';
 import { ManagementRoutingModule } from './management-routing.module';
 import { ManagementComponent } from './management.component';
 import { ManagementService } from './management.service';
@@ -11,6 +11,7 @@ import { ManagementService } from './management.service';
     NbCardModule,
     NbListModule,
     NbSelectModule,
+    NbIconModule,
     ManagementRoutingModule,
   ],
   declarations: [

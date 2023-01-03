@@ -14,12 +14,12 @@ export class TemperatureComponent implements OnDestroy {
   private alive = true;
 
   temperatureData: Temperature;
-  temperature: number;
+  temperature: Number;
   temperatureOff = false;
   temperatureMode = 'cool';
 
   humidityData: Temperature;
-  humidity: number;
+  humidity: Number;
   humidityOff = false;
   humidityMode = 'heat';
 
