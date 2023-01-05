@@ -124,7 +124,7 @@ export class CountryOrdersMapComponent implements OnDestroy {
       this.resetHighlight(this.selectedCountry);
       this.highlightFeature(featureLayer);
       this.selectedCountry = featureLayer;
-      this.select.emit(featureLayer.feature.properties.name);
+      this.selectDom.emit(featureLayer.feature.properties.name);
     }
   }
 

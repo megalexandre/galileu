@@ -10,24 +10,32 @@ const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-    {
-      path: 'dashboard',
-      component: ECommerceComponent,
-    },
+
     {
       path: 'homepage',
       loadChildren: () => import('./homepage/homepage.module')
         .then(m => m.HomepageModule),
     },
     {
-      path: 'iot-dashboard',
-      component: DashboardComponent,
-    },
-    {
       path: 'financial',
       loadChildren: () => import('./financial/financial.module')
         .then(m => m.FinancialModule),
     },
+    {
+      path: 'operational',
+      loadChildren: () => import('./operational/operational.module')
+        .then(m => m.OperationalModule),
+    },
+
+    {
+      path: 'dashboard',
+      component: ECommerceComponent,
+    },
+    {
+      path: 'iot-dashboard',
+      component: DashboardComponent,
+    },
+
     {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')

@@ -2,7 +2,6 @@
   "name": "galileu",
   "version": "8.0.0",
   "license": "MIT",
-
   "scripts": {
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
@@ -55,6 +54,7 @@
     "ng2-ckeditor": "~1.2.9",
     "ng2-completer": "^9.0.1",
     "ng2-smart-table": "^1.6.0",
+    "ngx-drag-drop": "^15.0.1",
     "ngx-echarts": "^4.2.2",
     "node-sass": "^4.14.1",
     "normalize.css": "6.0.0",

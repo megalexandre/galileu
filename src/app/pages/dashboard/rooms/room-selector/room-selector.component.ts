@@ -108,7 +108,7 @@ export class RoomSelectorComponent implements OnInit, OnDestroy {
   }
 
   selectRoom(roomNumber) {
-    this.select.emit(roomNumber);
+    this.selectDom.emit(roomNumber);
     this.selectedRoom = roomNumber;
     this.sortRooms();
   }

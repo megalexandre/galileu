@@ -51,7 +51,7 @@ export class CountryOrdersComponent implements OnInit, OnDestroy {
       });
   }
 
-  selectCountryById(countryName: string) {
+  selectCountryById(countryName: any) {
     this.countryName = countryName;
 
     this.countryOrderService.getCountriesCategoriesData(countryName)

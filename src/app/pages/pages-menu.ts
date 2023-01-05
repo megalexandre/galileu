@@ -8,14 +8,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: 'Dashboard old',
-    icon: 'home-outline',
-    link: '/pages/dashboard',
+    title: 'Operacional',
+    group: true,
   },
   {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/pages/iot-dashboard',
+    title: 'Quadro de trabalho',
+    icon: 'layout-outline',
+    children: [
+      {
+        title: 'Kanbam',
+        link: '/pages/operational',
+      },
+    ],
+  },
+  {
+    title: 'Estratégico',
+    group: true,
   },
   {
     title: 'Financeiro',
@@ -28,8 +36,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'FEATURES',
-    group: true,
+    title: 'Dashboard old',
+    icon: 'home-outline',
+    link: '/pages/dashboard',
+  },
+  {
+    title: 'IoT Dashboard',
+    icon: 'home-outline',
+    link: '/pages/iot-dashboard',
   },
   {
     title: 'Layout',
