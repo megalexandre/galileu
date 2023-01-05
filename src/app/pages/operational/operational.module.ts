@@ -8,7 +8,6 @@ import { KanbamColumnComponent } from './kanbam/kanbam-column/kanbam-column.comp
 import { KanbamColumnItemComponent } from './kanbam/kanbam-column-item/kanbam-column-item.component';
 
 
-
 @NgModule({
   imports: [
     CommonModule,
