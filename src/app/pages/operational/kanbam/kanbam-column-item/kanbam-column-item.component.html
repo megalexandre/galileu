@@ -1,4 +1,22 @@
-<nb-card [accent]='accent'>
+
+<nb-card [accent]=accent>
+  <nb-card-body>
+    <div class="progress-info" *ngFor="let item of [{title: 'teste', value: 'teste', description: 'descricao'}]">
+      <div class="subtitle">Estimativa: </div>
+      <div class="h3"> Instalar Antena</div>
+      <div class="caption description">
+        <bdi> Alexandre Queiroz</bdi>
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <bdi> Alexandre Queiroz</bdi>
+  </nb-card-footer>
+</nb-card>
+
+
+<nb-card [accent]=accent>
+
   <nb-card-body>
     {{task}}
   </nb-card-body>
@@ -6,4 +24,5 @@
   <nb-card-footer>
     {{responsible}}
   </nb-card-footer>
+
 </nb-card>

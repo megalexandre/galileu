@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "galileu": {
+    "acal": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -95,18 +95,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "galileu:build"
+            "browserTarget": "acal:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "galileu:build:production"
+              "browserTarget": "acal:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "galileu:build"
+            "browserTarget": "acal:build"
           }
         },
         "test": {
@@ -161,7 +161,7 @@
         }
       }
     },
-    "galileu-e2e": {
+    "acal-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -170,7 +170,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "galileu:serve"
+            "devServerTarget": "acal:serve"
           }
         },
         "lint": {
@@ -185,7 +185,7 @@
       }
     }
   },
-  "defaultProject": "galileu",
+  "defaultProject": "acal",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "ngx",

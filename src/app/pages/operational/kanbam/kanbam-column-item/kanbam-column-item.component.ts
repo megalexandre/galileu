@@ -17,8 +17,4 @@ export class KanbamColumnItemComponent {
   @Input()
   responsible: string = 'basic';
 
-  constructor(){
-    this.task;
-    this.accent;
-  }
 }

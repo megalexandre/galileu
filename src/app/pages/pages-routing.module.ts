@@ -10,7 +10,6 @@ const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-
     {
       path: 'homepage',
       loadChildren: () => import('./homepage/homepage.module')
@@ -25,6 +24,11 @@ const routes: Routes = [{
       path: 'operational',
       loadChildren: () => import('./operational/operational.module')
         .then(m => m.OperationalModule),
+    },
+    {
+      path: 'registration',
+      loadChildren: () => import('./registration/registration.module')
+        .then(m => m.RegistrationModule),
     },
 
     {
