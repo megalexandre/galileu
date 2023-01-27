@@ -6,23 +6,69 @@
 
   <nb-card-body>
 
-    <table class="table table-hover">
+    <ngx-app-table [nbSpinner]="loading">
       <thead>
         <tr>
-          <th scope="col">Nome:</th>
-          <th scope="col">Documento:</th>
-          <th scope="col">Ações:</th>
+          <th class="col-9 align-middle">Nome:</th>
+          <th class="col-2 align-middle">Documento:</th>
+          <th class="col-1 align-middle" colspan="2">
+            <button nbButton outline status="basic" fullWidth>
+              <nb-icon icon="plus-outline"></nb-icon>
+            </button>
+          </th>
         </tr>
       </thead>
-      <tbody>
+
+      <thead>
         <tr>
-          <td>Alexandre Bezerra de Queiroz</td>
-          <td>03396885562</td>
-          <td colspan="2">@mdo</td>
+
+          <th>
+            <input type="text" nbInput placeholder="Nome" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.name">
+          </th>
+
+          <th>
+            <input type="text" mask="000.000.000-00" nbInput placeholder="Documento" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.document">
+          </th>
+
+          <th colspan="2">
+            <button nbButton outline status="success" fullWidth (click)="search()">
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let item of page?.content">
+          <td class="align-middle">{{item.name}}</td>
+          <td class="align-middle">{{item.document | identification}}</td>
+
+          <td class="align-middle">
+            <button nbButton outline status="warning" fullWidth (click)="search()">
+              <nb-icon icon="edit-2-outline"></nb-icon>
+            </button>
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="danger" fullWidth (click)="search()">
+              <nb-icon icon="trash-2-outline"></nb-icon>
+            </button>
+          </td>
         </tr>
       </tbody>
-      <tfoot></tfoot>
-    </table>
+
+      <tfoot>
+        <tr>
+          <td colspan="4" *ngIf="page">
+              <ngx-app-table-footer [page]="page">
+              </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
   </nb-card-body>
 
 </nb-card>

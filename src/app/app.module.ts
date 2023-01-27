@@ -12,11 +12,13 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from './@core/core.module';
 import { FakeBackendInterceptor } from './@fake/fakebackend.provider';
 import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 registerLocaleData(ptBr);
 
 
@@ -34,6 +36,7 @@ registerLocaleData(ptBr);
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
     CoreModule.forRoot(),
+    NgxMaskModule.forRoot(),
     ThemeModule.forRoot(),
   ],
   providers: [

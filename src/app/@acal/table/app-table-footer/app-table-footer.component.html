@@ -1,0 +1,8 @@
+<ng-container *ngIf="!page.empty">
+  <div class="caption">Exibindo de {{page.number + 1}} até {{page.number + page.numberOfElements}} de {{page.totalElements}} registros</div>
+</ng-container>
+
+<ng-container *ngIf="page.empty">
+  <div class="caption">Nenhum registro atende aos criterios</div>
+</ng-container>
+
