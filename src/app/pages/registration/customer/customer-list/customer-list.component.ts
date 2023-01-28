@@ -11,7 +11,17 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomerListComponent implements OnInit {
 
-  public filter: CustomerFilter = { name: '', document: ''};
+  public filter: CustomerFilter = {
+    name: '',
+    document: '',
+    page: 0,
+    pageSize: 5,
+    direction: 'ASC',
+    sortedField: 'name'
+  };
+
+  public personType : 'PERSON'|'LEGAL'  = 'PERSON';
+
   public page: Page<Customer>;
   public loading: boolean =  false;
 
@@ -21,6 +31,23 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.search()
+  }
+
+  public togglePersonType(){
+
+    this.filter.document = null;
+    if(this.personType === 'LEGAL'){
+      this.personType = 'PERSON'
+    } else {
+      this.personType = 'LEGAL'
+    }
+
+  }
+
+
+  public paginate(page: number){
+    this.filter.page = page;
+    this.search();
   }
 
   public search() {

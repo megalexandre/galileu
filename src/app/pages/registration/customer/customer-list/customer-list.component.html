@@ -27,7 +27,15 @@
           </th>
 
           <th>
-            <input type="text" mask="000.000.000-00" nbInput placeholder="Documento" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.document">
+            <nb-form-field>
+              <input type="text" [mask]="personType === 'PERSON' ? '000.000.000-00':'00.000.000/0000-00' " nbInput placeholder="Documento" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.document">
+              <button nbSuffix nbButton ghost (click)="togglePersonType()">
+                <nb-icon [icon]="personType === 'PERSON' ? 'person-outline' : 'car-outline'"
+                         pack="eva" [attr.aria-label]="personType === 'LEGAL' ? 'LEGAL' : 'PERSON'">
+                </nb-icon>
+              </button>
+            </nb-form-field>
+
           </th>
 
           <th colspan="2">
@@ -61,7 +69,7 @@
       <tfoot>
         <tr>
           <td colspan="4" *ngIf="page">
-              <ngx-app-table-footer [page]="page">
+              <ngx-app-table-footer [page]="page" (search)="paginate($event)">
               </ngx-app-table-footer>
           </td>
         </tr>

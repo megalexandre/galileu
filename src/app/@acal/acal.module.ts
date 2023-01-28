@@ -1,3 +1,4 @@
+import { NbInputModule, NbButtonModule, NbIconModule } from '@nebular/theme';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppTableComponent } from './table/app-table/app-table.component';
@@ -5,7 +6,9 @@ import { AppTableFooterComponent } from './table/app-table-footer/app-table-foot
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NbButtonModule,
+    NbIconModule,
   ],
   declarations: [
     AppTableComponent,
