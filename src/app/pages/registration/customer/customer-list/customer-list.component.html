@@ -9,10 +9,21 @@
     <ngx-app-table [nbSpinner]="loading">
       <thead>
         <tr>
-          <th class="col-9 align-middle">Nome:</th>
-          <th class="col-2 align-middle">Documento:</th>
+
+          <th class="col-9 align-middle" (click)="order('name')">
+              Nome:
+              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-2 align-middle" (click)="order('document')">
+            Documento:
+            <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
           <th class="col-1 align-middle" colspan="2">
-            <button nbButton outline status="basic" fullWidth>
+            <button nbButton outline status="basic" fullWidth (click)="add()">
               <nb-icon icon="plus-outline"></nb-icon>
             </button>
           </th>
@@ -28,7 +39,7 @@
 
           <th>
             <nb-form-field>
-              <input type="text" [mask]="personType === 'PERSON' ? '000.000.000-00':'00.000.000/0000-00' " nbInput placeholder="Documento" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.document">
+              <input type="text" [mask]="personType === 'PERSON' ? '000.000.000-00':'00.000.000/0000-00'" nbInput placeholder="Documento" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.document">
               <button nbSuffix nbButton ghost (click)="togglePersonType()">
                 <nb-icon [icon]="personType === 'PERSON' ? 'person-outline' : 'car-outline'"
                          pack="eva" [attr.aria-label]="personType === 'LEGAL' ? 'LEGAL' : 'PERSON'">

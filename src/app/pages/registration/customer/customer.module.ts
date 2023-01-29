@@ -9,6 +9,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from './customer.component';
 import { CustomerService } from './customer.service';
+import { CustomerAddComponent } from './customer-add/customer-add.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { CustomerService } from './customer.service';
   declarations: [
     CustomerComponent,
     CustomerListComponent,
+    CustomerAddComponent,
   ],
   providers: [
     CustomerService,

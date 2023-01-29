@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppTableComponent } from './table/app-table/app-table.component';
 import { AppTableFooterComponent } from './table/app-table-footer/app-table-footer.component';
+import { ErrorMessageComponent } from './form/error-message/error-message.component';
 
 @NgModule({
   imports: [
@@ -13,10 +14,12 @@ import { AppTableFooterComponent } from './table/app-table-footer/app-table-foot
   declarations: [
     AppTableComponent,
     AppTableFooterComponent,
+    ErrorMessageComponent,
   ],
   exports:[
     AppTableComponent,
     AppTableFooterComponent,
+    ErrorMessageComponent,
   ]
 })
 export class AcalModule { }
