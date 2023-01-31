@@ -4,8 +4,11 @@ export const environment = {
   production: false,
   baseUrl: baseUrl,
 
-  registration: {
-    paginate: baseUrl + 'customer/paginate'
+  customer: {
+    paginate: baseUrl + 'customer/paginate',
+    save: baseUrl + 'customer',
+    update: baseUrl + 'customer/update',
+    byId: baseUrl+ `customer/`
   },
 
   management: {

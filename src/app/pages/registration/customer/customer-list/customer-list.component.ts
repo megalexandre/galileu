@@ -4,6 +4,7 @@ import { Customer } from '@model/customer';
 import { Page } from '@model/page';
 import { CustomerService } from '../customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from 'app/@shared/data.service';
 
 @Component({
   selector: 'ngx-customer-list',
@@ -30,6 +31,7 @@ export class CustomerListComponent implements OnInit {
     private service: CustomerService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private data: DataService,
     ){
   }
 
@@ -40,6 +42,16 @@ export class CustomerListComponent implements OnInit {
   public add(){
     this.router.navigate(['../add'],{relativeTo: this.activatedRoute})
   }
+
+  public edit(id: string){
+    this.data.setId = id
+    this.router.navigate(['../edit'],{relativeTo: this.activatedRoute})
+  }
+
+  public remove(id: string){
+    this.router.navigate(['../delete'],{relativeTo: this.activatedRoute})
+  }
+
 
   public order(field: string){
     this.filter.sortedField = field

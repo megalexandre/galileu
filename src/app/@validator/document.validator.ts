@@ -2,7 +2,7 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 export default class DocumentValidator {
 
-  static valid(): ValidatorFn {
+  static  valid(): ValidatorFn {
     return (control: AbstractControl) => {
       const cpf = control.value
       if (cpf) {

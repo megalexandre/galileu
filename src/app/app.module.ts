@@ -12,9 +12,11 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { DateFnsModule } from 'ngx-date-fns';
 import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from './@core/core.module';
 import { FakeBackendInterceptor } from './@fake/fakebackend.provider';
+import { JwtInterceptor } from './@interceptor/jwt.interceptor';
 import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,9 +40,10 @@ registerLocaleData(ptBr);
     CoreModule.forRoot(),
     NgxMaskModule.forRoot(),
     ThemeModule.forRoot(),
+    DateFnsModule.forRoot(),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'pt-PT' },
   ],
   bootstrap: [AppComponent],

@@ -9,10 +9,22 @@ import { CustomerFilter } from '@model/filter/customer-filter';
 @Injectable()
 export class CustomerService {
 
-  constructor(public http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   public getPage(filter: CustomerFilter): Observable<Page<Customer>>{
-      return this.http.post<Page<Customer>>(`${environment.registration.paginate}`, filter);
+      return this.http.post<Page<Customer>>(`${environment.customer.paginate}`, filter);
+  }
+
+  public getById(id: string): Observable<Customer>{
+    return this.http.get<Customer>(`${environment.customer.byId}${id}`);
+  }
+
+  public save(customer: Customer): Observable<Customer>{
+    return this.http.post<Customer>(`${environment.customer.save}`, customer);
+  }
+
+  public update(customer: Customer): Observable<Customer>{
+    return this.http.put<Customer>(`${environment.customer.update}`, customer);
   }
 
 }

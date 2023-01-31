@@ -1,42 +1,57 @@
-import { DatePipe } from '@angular/common';
+import { CustomerService } from './../customer.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataService } from 'app/@shared/data.service';
+import { Customer } from '@model/customer';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
-import DateValidator from 'app/@validator/date.validator';
 import DocumentValidator from 'app/@validator/document.validator';
-import { CustomerService } from '../customer.service';
+import DateValidator from 'app/@validator/date.validator';
 
 @Component({
-  selector: 'ngx-customer-add',
-  templateUrl: './customer-add.component.html',
-  styleUrls: ['./customer-add.component.scss']
+  selector: 'ngx-customer-edit',
+  templateUrl: './customer-edit.component.html',
+  styleUrls: ['./customer-edit.component.scss']
 })
-export class CustomerAddComponent implements OnInit {
+export class CustomerEditComponent implements OnInit {
 
-  form: FormGroup;
+  public id: string;
+  public loaded: boolean = false;
+  public customer: Customer;
+  public form: FormGroup;
   public submmited: boolean = false;
-  public personTypeValue : 'PERSON'|'LEGAL' = 'PERSON';
+  public personTypeValue : 'PERSON'|'LEGAL'  = 'PERSON';
 
   constructor(
+    private route: ActivatedRoute,
+    private data: DataService,
+    private service: CustomerService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private service: CustomerService,
     private toastrService: NbToastrService,
-    private datepipe: DatePipe
     ) { }
 
 
   ngOnInit(): void {
+    this.id = this.data.id
 
-    this.form = this.formBuilder.group({
-      name: [null, Validators.required],
-      document: [null, [Validators.required, DocumentValidator.valid() ]],
-      birthDay: [null,  [DateValidator.valid()]],
-      phoneNumber: [null],
-      personType: ['PERSON']
-    })
+    this.service.getById(this.id).subscribe(
+      (customer: Customer)=> {
+        this.customer = customer;
+
+        this.form = this.formBuilder.group({
+          id: [customer.id, Validators.required],
+          name: [customer.name, Validators.required],
+          document: [customer.document, [Validators.required, DocumentValidator.valid() ]],
+          birthDay: [customer.birthDay,  [DateValidator.valid()]],
+          phoneNumber: [customer.phoneNumber],
+          personType: [customer.personType]
+        })
+        this.loaded = true
+      }
+    )
+
   }
 
   public togglePersonType(){
@@ -58,7 +73,7 @@ export class CustomerAddComponent implements OnInit {
       return
     }
 
-    this.service.save(this.form.value).subscribe(
+    this.service.update(this.form.value).subscribe(
       () => {
         this.toastrService.success(`Sucesso`, `Novo Registro adicionado`)
         this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
@@ -97,11 +112,15 @@ export class CustomerAddComponent implements OnInit {
     return this.form.get('birthDay')
   }
 
-  get phoneNumber(): AbstractControl {
-    return this.form.get('phoneNumber')
+  get number(): AbstractControl {
+    return this.form.get('number')
   }
 
   get document(): AbstractControl {
     return this.form.get('document')
   }
+
+
+
+
 }

@@ -41,13 +41,14 @@
           <div class="row mb-3">
 
             <div class="col-md-6 col-12">
-              <label for="telefone">Telefone:</label>
-              <input id="telefone" type="text" nbInput fullWidth placeholder="Telefone:" formControlName="number">
+              <label for="telefone" class="label">Telefone:</label>
+              <input id="telefone" [status]="getStatus('phoneNumber')" mask="(00) 0 0000-0000" type="text" nbInput fullWidth placeholder="Telefone:" formControlName="phoneNumber">
             </div>
 
             <div class="col-md-6 col-12">
-            <label for="birthDay">Data de Nascimento:</label>
-            <input id="birthDay" type="text" nbInput fullWidth placeholder="Data de Nascimento:" formControlName="birthDay">
+              <label for="birthDay" class="label">Data de Nascimento:</label>
+              <input id="birthDay" mask="00/00/0000" type="text" nbInput fullWidth placeholder="Data de Nascimento:" formControlName="birthDay" [status]="getStatus('birthDay')">
+              <error-message [message]="'Esse data não é valida'" [show]="(birthDay.errors?.dateNotValid && (submmited || this.form.touched))"></error-message>
             </div>
 
           </div>

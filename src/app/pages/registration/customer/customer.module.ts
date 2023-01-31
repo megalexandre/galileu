@@ -1,6 +1,6 @@
 import { NgxMaskModule } from 'ngx-mask';
 import { PipeModule } from './../../../@pipe/pipe.module';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbButtonModule, NbCardModule, NbInputModule, NbSpinnerModule, NbIconModule, NbFormFieldModule } from '@nebular/theme';
@@ -10,6 +10,8 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from './customer.component';
 import { CustomerService } from './customer.service';
 import { CustomerAddComponent } from './customer-add/customer-add.component';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
+import { CustomerDeleteComponent } from './customer-delete/customer-delete.component';
 
 @NgModule({
   imports: [
@@ -31,9 +33,12 @@ import { CustomerAddComponent } from './customer-add/customer-add.component';
     CustomerComponent,
     CustomerListComponent,
     CustomerAddComponent,
+    CustomerEditComponent,
+    CustomerDeleteComponent,
   ],
   providers: [
     CustomerService,
+    DatePipe,
   ]
 })
 export class CustomerModule { }

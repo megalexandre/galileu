@@ -64,13 +64,13 @@
           <td class="align-middle">{{item.document | identification}}</td>
 
           <td class="align-middle">
-            <button nbButton outline status="warning" fullWidth (click)="search()">
+            <button nbButton outline status="warning" fullWidth (click)="edit(item.id)">
               <nb-icon icon="edit-2-outline"></nb-icon>
             </button>
           </td>
 
           <td class="align-middle">
-            <button nbButton outline status="danger" fullWidth (click)="search()">
+            <button nbButton outline status="danger" fullWidth (click)="remove(item.id)" >
               <nb-icon icon="trash-2-outline"></nb-icon>
             </button>
           </td>
