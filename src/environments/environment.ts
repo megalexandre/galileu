@@ -11,6 +11,15 @@ export const environment = {
     byId: baseUrl+ `customer/`
   },
 
+  link: {
+    paginate: baseUrl + 'link/paginate',
+    save: baseUrl + 'link',
+    update: baseUrl + 'link/update',
+    byId: baseUrl+ `link/`
+  },
+
+
+
   management: {
     router: '/management',
   },

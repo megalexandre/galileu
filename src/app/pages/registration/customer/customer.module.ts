@@ -38,7 +38,6 @@ import { CustomerDeleteComponent } from './customer-delete/customer-delete.compo
   ],
   providers: [
     CustomerService,
-    DatePipe,
   ]
 })
 export class CustomerModule { }

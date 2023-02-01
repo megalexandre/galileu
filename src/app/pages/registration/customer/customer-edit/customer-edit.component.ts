@@ -2,7 +2,7 @@ import { CustomerService } from './../customer.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DataService } from 'app/@shared/data.service';
-import { Customer } from '@model/customer';
+import { Customer } from '@model/default/customer';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NbToastrService } from '@nebular/theme';
 import DocumentValidator from 'app/@validator/document.validator';
@@ -23,7 +23,6 @@ export class CustomerEditComponent implements OnInit {
   public personTypeValue : 'PERSON'|'LEGAL'  = 'PERSON';
 
   constructor(
-    private route: ActivatedRoute,
     private data: DataService,
     private service: CustomerService,
     private formBuilder: FormBuilder,
@@ -112,8 +111,8 @@ export class CustomerEditComponent implements OnInit {
     return this.form.get('birthDay')
   }
 
-  get number(): AbstractControl {
-    return this.form.get('number')
+  get phoneNumber(): AbstractControl {
+    return this.form.get('phoneNumber')
   }
 
   get document(): AbstractControl {

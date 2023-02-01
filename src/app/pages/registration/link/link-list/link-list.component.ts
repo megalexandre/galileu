@@ -1,19 +1,19 @@
-import { CustomerFilter } from './../../../../@core/data/model/filter/customer-filter';
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '@model/default/customer';
-import { Page } from '@model/page';
-import { CustomerService } from '../customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Link } from '@model/default/link';
+import { LinkFilter } from '@model/filter/link-filter';
+import { Page } from '@model/page';
 import { DataService } from 'app/@shared/data.service';
+import { LinkService } from '../link-service.service';
 
 @Component({
-  selector: 'ngx-customer-list',
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.scss']
+  selector: 'ngx-link-list',
+  templateUrl: './link-list.component.html',
+  styleUrls: ['./link-list.component.scss']
 })
-export class CustomerListComponent implements OnInit {
+export class LinkListComponent implements OnInit {
 
-  public filter: CustomerFilter = {
+  public filter: LinkFilter = {
     name: '',
     document: '',
     page: 0,
@@ -22,13 +22,11 @@ export class CustomerListComponent implements OnInit {
     sortedField: 'name'
   };
 
-  public personType : 'PERSON'|'LEGAL'  = 'PERSON';
-
-  public page: Page<Customer>;
+  public page: Page<Link>;
   public loading: boolean =  false;
 
   constructor(
-    private service: CustomerService,
+    private service: LinkService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private data: DataService,
@@ -62,16 +60,6 @@ export class CustomerListComponent implements OnInit {
     }
 
     this.search();
-  }
-
-  public togglePersonType(){
-
-    this.filter.document = null;
-    if(this.personType === 'LEGAL'){
-      this.personType = 'PERSON'
-    } else {
-      this.personType = 'LEGAL'
-    }
   }
 
 

@@ -1,9 +1,6 @@
-export interface CustomerFilter {
+import { DefaultFilter } from "./default-filter";
+
+export interface CustomerFilter extends DefaultFilter {
   name?: string,
   document?: string,
-  page?: number,
-  pageSize?: number,
-  direction?: 'ASC' | 'DESC',
-  sortedField?: string,
-  birthDay?: string,
 }

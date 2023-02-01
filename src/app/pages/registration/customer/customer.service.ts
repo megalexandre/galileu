@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { Injectable } from '@angular/core';
 import { Page } from '@model/page';
-import { Customer } from '@model/customer';
+import { Customer } from '@model/default/customer';
 import { HttpClient } from '@angular/common/http';
 import { CustomerFilter } from '@model/filter/customer-filter';
 

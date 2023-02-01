@@ -8,7 +8,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const bearer = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGV4YW5kcmUiLCJyb2xlIjpbIkFETUlOIl0sIm5hbWUiOiJhbGV4YW5kcmUiLCJleHAiOjE2NzUyMjA1NjV9.QnpPn5g1V_13budBJlTGzEgIgecLj6xzkh136dj0qsMV_GUjA54YtZGk5EsXUr9k-9B5Q7VWyedybgKrwsDEYw"
+        const bearer = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGV4YW5kcmUiLCJyb2xlIjpbIkFETUlOIl0sIm5hbWUiOiJhbGV4YW5kcmUiLCJleHAiOjE2NzUyNzgzODF9.t-1A8yR_bgBp62mmG8LaFRAN5pLfO64ZS6okA15i00UfdSSjaHmZswXn09l4ZgKAtGMu_5XWkVN5Bzxae2sARw"
 
           request = request.clone({
               setHeaders: {

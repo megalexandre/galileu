@@ -1,28 +1,24 @@
-import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
-import DateValidator from 'app/@validator/date.validator';
-import DocumentValidator from 'app/@validator/document.validator';
-import { CustomerService } from '../customer.service';
+import { LinkService } from '../link-service.service';
 
 @Component({
-  selector: 'ngx-customer-add',
-  templateUrl: './customer-add.component.html',
-  styleUrls: ['./customer-add.component.scss']
+  selector: 'ngx-link-add',
+  templateUrl: './link-add.component.html',
+  styleUrls: ['./link-add.component.scss']
 })
-export class CustomerAddComponent implements OnInit {
+export class LinkAddComponent implements OnInit {
 
   form: FormGroup;
   public submmited: boolean = false;
-  public personTypeValue : 'PERSON'|'LEGAL' = 'PERSON';
 
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private service: CustomerService,
+    private service: LinkService,
     private toastrService: NbToastrService,
     ) { }
 
@@ -31,24 +27,9 @@ export class CustomerAddComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       name: [null, Validators.required],
-      document: [null, [Validators.required, DocumentValidator.valid() ]],
-      birthDay: [null,  [DateValidator.valid()]],
-      phoneNumber: [null],
-      personType: ['PERSON']
     })
   }
 
-  public togglePersonType(){
-
-    if(this.personTypeValue === 'LEGAL'){
-      this.personTypeValue = 'PERSON'
-    } else {
-      this.personTypeValue = 'LEGAL'
-    }
-
-    this.personType.setValue(this.personTypeValue);
-    this.document.setValue(null);
-  }
 
   public submit(){
     this.submmited = true;
@@ -88,19 +69,5 @@ export class CustomerAddComponent implements OnInit {
     return this.form.get('name')
   }
 
-  get personType(): AbstractControl {
-    return this.form.get('personType')
-  }
 
-  get birthDay(): AbstractControl {
-    return this.form.get('birthDay')
-  }
-
-  get phoneNumber(): AbstractControl {
-    return this.form.get('phoneNumber')
-  }
-
-  get document(): AbstractControl {
-    return this.form.get('document')
-  }
 }
