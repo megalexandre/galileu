@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ngx-app-table',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-table.component.scss']
 })
 export class AppTableComponent {
+
+  @Input()
+  tableSize: string = "table-sm"
 
   constructor() { }
 

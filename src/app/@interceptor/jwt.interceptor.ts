@@ -1,21 +1,37 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { NbAuthJWTToken, NbAuthService } from "@nebular/auth";
+import { request } from "http";
 import { Observable } from "rxjs";
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-    constructor() { }
+
+  private bearer: string;
+
+  constructor(private authService: NbAuthService) {
+    this.getToken();
+  }
+
+  getToken(){
+    this.authService.onTokenChange()
+      .subscribe((token: NbAuthJWTToken) => {
+        if (token.isValid()) {
+          this.bearer = token.getValue();
+        }
+      }
+    );
+  }
 
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const bearer = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGV4YW5kcmUiLCJyb2xlIjpbIkFETUlOIl0sIm5hbWUiOiJhbGV4YW5kcmUiLCJleHAiOjE2NzUyNzgzODF9.t-1A8yR_bgBp62mmG8LaFRAN5pLfO64ZS6okA15i00UfdSSjaHmZswXn09l4ZgKAtGMu_5XWkVN5Bzxae2sARw"
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    request = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${this.bearer}`
+        }
+      }
+    );
 
-          request = request.clone({
-              setHeaders: {
-                  Authorization: `Bearer ${bearer}`
-              }
-          });
-
-        return next.handle(request);
-    }
+    return next.handle(request);
+  }
 }

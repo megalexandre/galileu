@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Customer } from '@model/default/customer';
 import { NbToastrService } from '@nebular/theme';
 import { LinkService } from '../link-service.service';
 
@@ -27,9 +28,13 @@ export class LinkAddComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       name: [null, Validators.required],
+      customer: [null, Validators.required],
     })
   }
 
+  public selectCustomer(customer: Customer){
+    this.customer.setValue(customer)
+  }
 
   public submit(){
     this.submmited = true;
@@ -69,5 +74,8 @@ export class LinkAddComponent implements OnInit {
     return this.form.get('name')
   }
 
+  get customer(): AbstractControl {
+    return this.form.get('customer')
+  }
 
 }

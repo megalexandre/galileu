@@ -14,8 +14,6 @@ import { LinkService } from '../link-service.service';
 export class LinkListComponent implements OnInit {
 
   public filter: LinkFilter = {
-    name: '',
-    document: '',
     page: 0,
     pageSize: 10,
     direction: 'ASC',

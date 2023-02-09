@@ -4,6 +4,11 @@ export const environment = {
   production: false,
   baseUrl: baseUrl,
 
+  auth:{
+    login: baseUrl + 'auth/login',
+    logout:  baseUrl + 'auth/logout',
+  },
+
   customer: {
     paginate: baseUrl + 'customer/paginate',
     save: baseUrl + 'customer',

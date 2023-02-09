@@ -10,16 +10,16 @@ import {
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
-  NbWindowModule,
+  NbWindowModule
 } from '@nebular/theme';
 import { DateFnsModule } from 'ngx-date-fns';
 import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from './@core/core.module';
-import { FakeBackendInterceptor } from './@fake/fakebackend.provider';
 import { JwtInterceptor } from './@interceptor/jwt.interceptor';
 import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './auth/auth.guard';
 
 registerLocaleData(ptBr);
 
@@ -43,6 +43,7 @@ registerLocaleData(ptBr);
     DateFnsModule.forRoot(),
   ],
   providers: [
+    AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'pt-PT' },
   ],

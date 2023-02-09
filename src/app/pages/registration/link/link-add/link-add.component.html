@@ -1,40 +1,51 @@
-<form [formGroup]="form" (submit)="submit()">
-  <div class="row">
-    <div class="col-lg-12">
-      <nb-card>
+<nb-card>
+  <nb-card-body>
+    <nb-stepper orientation="horizontal">
 
-        <nb-card-header>
-          Novo Ligação
-        </nb-card-header>
+      <nb-step [label]="labelOne" >
+        <ng-template #labelOne>Usuário</ng-template>
 
-        <nb-card-body>
-          <div class="row mb-3">
+        <hr/>
+        <ngx-select-user (selectCustomer)="selectCustomer($event)"></ngx-select-user>
+        <hr/>
 
-            <div class="col-md-9 col-12">
-              <label for="name" class="label">Nome:</label>
-              <input id="name" type="text" nbInput fullWidth placeholder="Nome:" formControlName="name"  [status]="getStatus('name')">
-              <error-message [message]="'Nome é obrigatório'" [show]="(name.errors?.required && (submmited || this.form.touched))"></error-message>
-            </div>
+        <div class="d-flex justify-content-between">
+          <button nbButton disabled nbStepperNext>Voltar</button>
+          <button nbButton nbStepperNext [disabled]="customer.invalid">Avançar</button>
+        </div>
 
-          </div>
+      </nb-step>
 
-        </nb-card-body>
-        <nb-card-footer>
+      <nb-step [label]="labelTwo">
+        <ng-template #labelTwo>Endereço</ng-template>
+        <h4>Selecionar o endereço</h4>
+        <p class="lorem">
+          Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
+          Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
+          gravida vizzle, dang.
+        </p>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
 
-          <div class="d-flex justify-content-between">
-            <button type="button" nbButton outline status="basic" (click)="back()">
-              <nb-icon icon="arrow-back-outline"></nb-icon>
-            </button>
+      <nb-step label="Categoria">
+        <h4>Selecionar a categoria</h4>
+        <p class="lorem">
+          Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
+          Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
+          gravida vizzle, dang.
+        </p>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
 
-            <button type="submit" nbButton outline status="success">
-              <nb-icon icon="save-outline"></nb-icon>
-            </button>
-          </div>
+      <nb-step [label]="labelFour">
+        <ng-template #labelFour>Revisão</ng-template>
 
-        </nb-card-footer>
-      </nb-card>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton disabled nbStepperNext>next</button>
+      </nb-step>
 
-    </div>
-
-  </div>
-</form>
+    </nb-stepper>
+  </nb-card-body>
+</nb-card>
