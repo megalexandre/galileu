@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './customer-delete.component.html',
   styleUrls: ['./customer-delete.component.scss']
 })
-export class CustomerDeleteComponent implements OnInit {
+export class CustomerDeleteComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
