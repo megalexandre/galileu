@@ -1,3 +1,5 @@
+import { PlaceService } from './../pages/registration/place/place.service';
+import { SelectPlaceComponent } from './select-place/select-place.component';
 import { PipeModule } from './../@pipe/pipe.module';
 import { CustomerService } from './../pages/registration/customer/customer.service';
 import { AcalModule } from './../@acal/acal.module';
@@ -26,13 +28,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgxMaskModule.forChild(),
   ],
   declarations: [
-    SelectUserComponent
+    SelectUserComponent,
+    SelectPlaceComponent,
   ],
   exports:[
-    SelectUserComponent
+    SelectUserComponent,
+    SelectPlaceComponent,
   ],
   providers:[
     CustomerService,
+    PlaceService,
   ]
 })
 export class ComponentModule { }

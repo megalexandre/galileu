@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Customer } from '@model/default/customer';
-import { Place } from '@model/default/place';
 import { NbToastrService } from '@nebular/theme';
-import { LinkService } from '../link-service.service';
+import { AddressService } from '../address.service';
 
 @Component({
-  selector: 'ngx-link-add',
-  templateUrl: './link-add.component.html',
-  styleUrls: ['./link-add.component.scss']
+  selector: 'ngx-address-add',
+  templateUrl: './address-add.component.html',
+  styleUrls: ['./address-add.component.scss']
 })
-export class LinkAddComponent implements OnInit {
+export class AddressAddComponent implements OnInit {
 
   form: FormGroup;
   public submmited: boolean = false;
@@ -20,7 +18,7 @@ export class LinkAddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private service: LinkService,
+    private service: AddressService,
     private toastrService: NbToastrService,
     ) { }
 
@@ -29,18 +27,9 @@ export class LinkAddComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       name: [null, Validators.required],
-      customer: [null, Validators.required],
-      place: [null, Validators.required],
     })
   }
 
-  public selectCustomer(customer: Customer){
-    this.customer.setValue(customer)
-  }
-
-  public selectPlace(place: Place){
-    this.place.setValue(place)
-  }
 
   public submit(){
     this.submmited = true;
@@ -78,14 +67,6 @@ export class LinkAddComponent implements OnInit {
 
   get name(): AbstractControl {
     return this.form.get('name')
-  }
-
-  get customer(): AbstractControl {
-    return this.form.get('customer')
-  }
-
-  get place(): AbstractControl {
-    return this.form.get('place')
   }
 
 }

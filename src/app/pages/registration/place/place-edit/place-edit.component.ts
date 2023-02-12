@@ -1,46 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Customer } from '@model/default/customer';
 import { Place } from '@model/default/place';
 import { NbToastrService } from '@nebular/theme';
-import { LinkService } from '../link-service.service';
+import { DataService } from 'app/@shared/data.service';
+import { PlaceService } from './../place.service';
 
 @Component({
-  selector: 'ngx-link-add',
-  templateUrl: './link-add.component.html',
-  styleUrls: ['./link-add.component.scss']
+  selector: 'ngx-place-edit',
+  templateUrl: './place-edit.component.html',
+  styleUrls: ['./place-edit.component.scss']
 })
-export class LinkAddComponent implements OnInit {
+export class PlaceEditComponent implements OnInit {
 
-  form: FormGroup;
+  public id: string;
+  public loaded: boolean = false;
+  public place: Place;
+  public form: FormGroup;
   public submmited: boolean = false;
 
   constructor(
+    private data: DataService,
+    private service: PlaceService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private service: LinkService,
     private toastrService: NbToastrService,
     ) { }
 
 
   ngOnInit(): void {
+    this.id = this.data.id
 
-    this.form = this.formBuilder.group({
-      name: [null, Validators.required],
-      customer: [null, Validators.required],
-      place: [null, Validators.required],
-    })
+    this.service.getById(this.id).subscribe(
+      (place: Place)=> {
+        this.place = place;
+
+        this.form = this.formBuilder.group({
+          id: [place.id, Validators.required],
+        })
+        this.loaded = true
+      }
+    )
+
   }
 
-  public selectCustomer(customer: Customer){
-    this.customer.setValue(customer)
-  }
-
-  public selectPlace(place: Place){
-    this.place.setValue(place)
-  }
 
   public submit(){
     this.submmited = true;
@@ -49,7 +53,7 @@ export class LinkAddComponent implements OnInit {
       return
     }
 
-    this.service.save(this.form.value).subscribe(
+    this.service.update(this.form.value).subscribe(
       () => {
         this.toastrService.success(`Sucesso`, `Novo Registro adicionado`)
         this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
@@ -78,14 +82,6 @@ export class LinkAddComponent implements OnInit {
 
   get name(): AbstractControl {
     return this.form.get('name')
-  }
-
-  get customer(): AbstractControl {
-    return this.form.get('customer')
-  }
-
-  get place(): AbstractControl {
-    return this.form.get('place')
   }
 
 }

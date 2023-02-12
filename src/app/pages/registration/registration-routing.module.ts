@@ -13,6 +13,16 @@ const routes: Routes = [
           .then(m => m.CustomerModule),
       },
       {
+        path: 'address',
+        loadChildren: () => import('./address/address.module')
+          .then(m => m.AddressModule),
+      },
+      {
+        path: 'place',
+        loadChildren: () => import('./place/place.module')
+          .then(m => m.PlaceModule),
+      },
+      {
         path: 'link',
         loadChildren: () => import('./link/link.module')
           .then(m => m.LinkModule),

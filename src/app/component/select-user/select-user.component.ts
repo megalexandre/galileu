@@ -93,7 +93,3 @@ export class SelectUserComponent implements OnInit{
   }
 
 }
-function Outpt() {
-  throw new Error('Function not implemented.');
-}
-

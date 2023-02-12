@@ -18,14 +18,15 @@
 
       <nb-step [label]="labelTwo">
         <ng-template #labelTwo>Endereço</ng-template>
-        <h4>Selecionar o endereço</h4>
-        <p class="lorem">
-          Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
-          Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
-          gravida vizzle, dang.
-        </p>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton nbStepperNext>next</button>
+
+        <hr/>
+        <ngx-select-place (selectPlace)="selectPlace($event)" ></ngx-select-place>
+        <hr/>
+
+        <div class="d-flex justify-content-between">
+          <button nbButton disabled nbStepperNext>Voltar</button>
+          <button nbButton nbStepperNext [disabled]="place.invalid">Avançar</button>
+        </div>
       </nb-step>
 
       <nb-step label="Categoria">

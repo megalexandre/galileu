@@ -1,0 +1,114 @@
+<nb-card>
+
+  <nb-card-header>
+    <h4>Selecionar a Categoria e Grupo</h4>
+  </nb-card-header>
+
+  <nb-card-body *ngIf="group !== null">
+
+    <ngx-app-table>
+      <thead>
+        <tr>
+          <!--
+            <th class="col-7 align-middle">Nome:</th>
+            <th class="col-3 align-middle">Número/Letra:</th>
+            <th class="col-2 align-middle">Limpar</th>
+          -->
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr>
+          <!--
+            <td class="align-middle">
+              {{place.address.name}}
+            </td>
+
+            <td class="align-middle">
+              {{place.number + ' ' + place.letter }}
+            </td>
+
+            <td class="align-middle">
+              <button nbButton outline status="basic" fullWidth (click)="clear()">
+                <nb-icon icon="trash-2-outline"></nb-icon>
+              </button>
+            </td>
+          -->
+        </tr>
+      </tbody>
+
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+  <nb-card-body *ngIf="place === null">
+
+    <ngx-app-table [nbSpinner]="loading">
+      <thead>
+        <tr>
+
+          <th class="col-9 align-middle" (click)="order('name')">
+              Nome:
+              <!--
+
+                <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+                <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+              -->
+          </th>
+
+          <th colspan="2" class="col-2 align-middle" (click)="order('document')">
+            Documento:
+            <!--
+              <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+            -->
+          </th>
+
+        </tr>
+      </thead>
+
+      <thead>
+        <tr>
+
+          <th>
+            <!--
+              <input type="text" nbInput placeholder="Nome" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.address.name">
+            -->
+          </th>
+
+          <th colspan="2">
+            <button nbButton outline status="success" fullWidth (click)="search()">
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let item of page?.content">
+          <td class="align-middle">{{item.group.name}}</td>
+          <td class="align-middle">{{item.name}}</td>
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="select(item)">
+              <nb-icon icon="person-done-outline"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="4" *ngIf="page">
+              <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+              </ngx-app-table-footer>
+          </td>
+        </tr>
+      </tfoot>
+
+    </ngx-app-table>
+
+  </nb-card-body>
+
+</nb-card>

@@ -34,6 +34,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/registration',
       },
       {
+        title: 'Endereço',
+        link: '/pages/registration/address',
+      },
+      {
+        title: 'Locais',
+        link: '/pages/registration/place',
+      },
+      {
         title: 'Ligações',
         link: '/pages/registration/link',
       },

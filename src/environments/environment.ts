@@ -16,6 +16,28 @@ export const environment = {
     byId: baseUrl+ `customer/`
   },
 
+  address: {
+    paginate: baseUrl + 'address/paginate',
+    save: baseUrl + 'address',
+    getAll: baseUrl + 'address/list',
+    byId: baseUrl+ `address/`,
+    update: baseUrl + 'address/update',
+  },
+
+  place: {
+    paginate: baseUrl + 'place/paginate',
+    save: baseUrl + 'place',
+    update: baseUrl + 'place/update',
+    byId: baseUrl+ `place/`
+  },
+
+  group: {
+    paginate: baseUrl + 'group/paginate',
+    save: baseUrl + 'group',
+    update: baseUrl + 'group/update',
+    byId: baseUrl+ `group/`
+  },
+
   link: {
     paginate: baseUrl + 'link/paginate',
     save: baseUrl + 'link',

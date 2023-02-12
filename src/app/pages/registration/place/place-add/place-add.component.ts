@@ -1,45 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Customer } from '@model/default/customer';
-import { Place } from '@model/default/place';
 import { NbToastrService } from '@nebular/theme';
-import { LinkService } from '../link-service.service';
+import { PlaceService } from '../place.service';
+import { Address } from '@model/default/address';
+import { AddressService } from '../../address/address.service';
 
 @Component({
-  selector: 'ngx-link-add',
-  templateUrl: './link-add.component.html',
-  styleUrls: ['./link-add.component.scss']
+  selector: 'ngx-place-add',
+  templateUrl: './place-add.component.html',
+  styleUrls: ['./place-add.component.scss']
 })
-export class LinkAddComponent implements OnInit {
+export class PlaceAddComponent implements OnInit {
 
-  form: FormGroup;
+  public form: FormGroup;
   public submmited: boolean = false;
+  public adresses: Address[]
 
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private service: LinkService,
+    private service: PlaceService,
     private toastrService: NbToastrService,
-    ) { }
+    private addressSerive: AddressService,
+    ) {
+
+      this.addressSerive.getAll().subscribe(
+        (adresses: Address[])=>{
+          this.adresses = adresses
+        }
+      );
+
+  }
 
 
   ngOnInit(): void {
-
     this.form = this.formBuilder.group({
-      name: [null, Validators.required],
-      customer: [null, Validators.required],
-      place: [null, Validators.required],
+      number: [null, Validators.required],
+      letter: [null, Validators.required],
+      address: [null, Validators.required],
     })
-  }
-
-  public selectCustomer(customer: Customer){
-    this.customer.setValue(customer)
-  }
-
-  public selectPlace(place: Place){
-    this.place.setValue(place)
   }
 
   public submit(){
@@ -48,8 +49,8 @@ export class LinkAddComponent implements OnInit {
     if(this.form.invalid){
       return
     }
-
     this.service.save(this.form.value).subscribe(
+
       () => {
         this.toastrService.success(`Sucesso`, `Novo Registro adicionado`)
         this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
@@ -76,16 +77,15 @@ export class LinkAddComponent implements OnInit {
     return 'basic'
   }
 
-  get name(): AbstractControl {
-    return this.form.get('name')
+  get number(): AbstractControl {
+    return this.form.get('number')
   }
 
-  get customer(): AbstractControl {
-    return this.form.get('customer')
+  get letter(): AbstractControl {
+    return this.form.get('letter')
   }
 
-  get place(): AbstractControl {
-    return this.form.get('place')
+  get address(): AbstractControl {
+    return this.form.get('address')
   }
-
 }
