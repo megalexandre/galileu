@@ -9,25 +9,23 @@
     <ngx-app-table [nbSpinner]="loading">
       <thead>
         <tr>
-          <th class="col-9 align-middle" (click)="order('letter')">
-            Rua:
-            <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-            <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          <th class="col-9 align-middle" (click)="order('address.name')">
+            Logradouro:
+            <nb-icon *ngIf="filter.sortedField === 'address.name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'address.name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th class="col-9 align-middle" (click)="order('name')">
+          <th class="col-1 align-middle" (click)="order('number')">
               Número:
-              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-              <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'number' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'number' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th class="col-9 align-middle" (click)="order('letter')">
+          <th class="col-1 align-middle" (click)="order('letter')">
             Letra:
             <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
             <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
-
-
 
           <th class="col-1 align-middle" colspan="2">
             <button nbButton outline status="basic" fullWidth (click)="add()">
@@ -42,12 +40,15 @@
         <tr>
 
           <th>
+            <ngx-select-address (selectAddress)="selectAddress($event)" [showTitle]='false' [addSelectOption]='true' ></ngx-select-address>
           </th>
 
           <th>
+            <input type="text" mask="0*" nbInput placeholder="Número" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.number">
           </th>
 
           <th>
+            <input type="text" mask="A*" nbInput placeholder="Letra" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.letter">
           </th>
 
           <th colspan="2">

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Address } from '@model/default/address';
 import { NbToastrService } from '@nebular/theme';
 import { PlaceService } from '../place.service';
-import { Address } from '@model/default/address';
-import { AddressService } from '../../address/address.service';
 
 @Component({
   selector: 'ngx-place-add',
@@ -15,7 +14,6 @@ export class PlaceAddComponent implements OnInit {
 
   public form: FormGroup;
   public submmited: boolean = false;
-  public adresses: Address[]
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,17 +21,8 @@ export class PlaceAddComponent implements OnInit {
     private router: Router,
     private service: PlaceService,
     private toastrService: NbToastrService,
-    private addressSerive: AddressService,
     ) {
-
-      this.addressSerive.getAll().subscribe(
-        (adresses: Address[])=>{
-          this.adresses = adresses
-        }
-      );
-
   }
-
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -41,6 +30,10 @@ export class PlaceAddComponent implements OnInit {
       letter: [null, Validators.required],
       address: [null, Validators.required],
     })
+  }
+
+  selectAddress(address: Address){
+    this.address.setValue(address)
   }
 
   public submit(){

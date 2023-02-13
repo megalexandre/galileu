@@ -9,20 +9,8 @@ export const environment = {
     logout:  baseUrl + 'auth/logout',
   },
 
-  customer: {
-    paginate: baseUrl + 'customer/paginate',
-    save: baseUrl + 'customer',
-    update: baseUrl + 'customer/update',
-    byId: baseUrl+ `customer/`
-  },
-
-  address: {
-    paginate: baseUrl + 'address/paginate',
-    save: baseUrl + 'address',
-    getAll: baseUrl + 'address/list',
-    byId: baseUrl+ `address/`,
-    update: baseUrl + 'address/update',
-  },
+  customer: `${baseUrl + 'customer'}`,
+  address: `${baseUrl + 'address'}`,
 
   place: {
     paginate: baseUrl + 'place/paginate',

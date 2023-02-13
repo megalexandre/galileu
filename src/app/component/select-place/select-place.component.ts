@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Address } from '@model/default/address';
 import { Place } from '@model/default/place';
 import { PlaceFilter } from '@model/filter/place-filter';
 import { Page } from '@model/page';
@@ -13,13 +14,15 @@ export class SelectPlaceComponent implements OnInit{
 
   @Output()
   public selectPlace = new EventEmitter()
+
   public place: Place = null;
 
   public filter: PlaceFilter = {
     page: 0,
     pageSize: 10,
     direction: 'ASC',
-    sortedField: 'number'
+    address: null,
+    sortedField: 'letter'
   };
 
   public page: Page<Place>;
@@ -34,6 +37,20 @@ export class SelectPlaceComponent implements OnInit{
     this.search();
   }
 
+  public emitPlace(place: Place){
+    this.place = place
+    this.selectPlace.emit(place)
+  }
+
+  public clearPlace(){
+    this.place = null
+    this.selectPlace.emit(null)
+  }
+
+  public selectAddress(address: Address){
+    this.filter.address = address
+    this.search()
+  }
 
   public order(field: string){
     this.filter.sortedField = field
@@ -44,16 +61,6 @@ export class SelectPlaceComponent implements OnInit{
     }
 
     this.search();
-  }
-
-  public select(place: Place){
-    this.place = place
-    this.selectPlace.emit(place)
-  }
-
-  public clear(){
-    this.place = null
-    this.selectPlace.emit(null)
   }
 
 

@@ -1,16 +1,16 @@
 <nb-card>
 
   <nb-card-header>
-    <h4>Selecionar o local</h4>
+    <h4>Selecionar o Endereço</h4>
   </nb-card-header>
 
   <nb-card-body *ngIf="place !== null">
-
     <ngx-app-table>
       <thead>
         <tr>
           <th class="col-7 align-middle">Nome:</th>
-          <th class="col-3 align-middle">Número/Letra:</th>
+          <th class="col-3 align-middle">Letra:</th>
+          <th class="col-3 align-middle">Número:</th>
           <th class="col-2 align-middle">Limpar</th>
         </tr>
       </thead>
@@ -22,11 +22,15 @@
           </td>
 
           <td class="align-middle">
-            {{place.number + ' ' + place.letter }}
+            {{place.number}}
           </td>
 
           <td class="align-middle">
-            <button nbButton outline status="basic" fullWidth (click)="clear()">
+            {{place.letter}}
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="clearPlace()">
               <nb-icon icon="trash-2-outline"></nb-icon>
             </button>
           </td>
@@ -39,26 +43,28 @@
   </nb-card-body>
 
   <nb-card-body *ngIf="place === null">
-
     <ngx-app-table [nbSpinner]="loading">
       <thead>
         <tr>
-
-          <th class="col-9 align-middle" (click)="order('name')">
-              Nome:
-              <!--
-
-                <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-                <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
-              -->
+          <th class="col-9 align-middle" (click)="order('address.name')">
+            Logradouro:
+            <nb-icon *ngIf="filter.sortedField === 'address.name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'address.name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
-          <th colspan="2" class="col-2 align-middle" (click)="order('document')">
-            Documento:
-            <!--
-              <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
-              <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
-            -->
+          <th class="col-1 align-middle" (click)="order('number')">
+              Número:
+              <nb-icon *ngIf="filter.sortedField === 'number' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+              <nb-icon *ngIf="filter.sortedField === 'number' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" (click)="order('letter')">
+            Letra:
+            <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'letter' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
+
+          <th class="col-1 align-middle" colspan="2">
           </th>
 
         </tr>
@@ -68,9 +74,15 @@
         <tr>
 
           <th>
-            <!--
-              <input type="text" nbInput placeholder="Nome" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.address.name">
-            -->
+            <ngx-select-address (selectAddress)="selectAddress($event)" [showTitle]='false' [addSelectOption]='true' ></ngx-select-address>
+          </th>
+
+          <th>
+            <input type="text" mask="0*" nbInput placeholder="Número" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.number">
+          </th>
+
+          <th>
+            <input type="text" mask="A*" nbInput placeholder="Letra" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.letter">
           </th>
 
           <th colspan="2">
@@ -85,10 +97,15 @@
       <tbody >
         <tr *ngFor="let item of page?.content">
           <td class="align-middle">{{item.address.name}}</td>
-          <td class="align-middle">{{item.address.name}}</td>
+          <td class="align-middle">{{item.number}}</td>
+          <td class="align-middle">{{item.letter}}</td>
+
           <td class="align-middle">
-            <button nbButton outline status="basic" fullWidth (click)="select(item)">
-              <nb-icon icon="person-done-outline"></nb-icon>
+          </td>
+
+          <td class="align-middle">
+            <button nbButton outline status="basic" fullWidth (click)="emitPlace(item)">
+              <nb-icon icon="plus-outline"></nb-icon>
             </button>
           </td>
         </tr>
@@ -104,7 +121,7 @@
       </tfoot>
 
     </ngx-app-table>
-
   </nb-card-body>
+
 
 </nb-card>

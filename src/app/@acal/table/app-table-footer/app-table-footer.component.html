@@ -6,25 +6,18 @@
     </div>
   </ng-container>
 
-  <!--
-    <ng-container *ngIf="!page.empty">
-      <div class="caption">
-
-        {{'A'+ (page.number + 1) +'actual page B|' }}
-        {{'C'+ page.numberOfElements + 'numberOfElements D|'}}
-        {{'E'+ page.number + 'page.number F|' }}
-        {{'G'+page.size + 'page.size H|'}}
-
+  <ng-container *ngIf="!page.empty">
+    <div class="caption">
+      Total: {{page.totalElements}}
     </div>
-  </ng-container>
-  -->
-
-
-  <ng-container *ngIf="page.empty">
-    <div class="caption">Nenhum registro atende aos criterios</div>
   </ng-container>
 
 </div>
+
+
+<ng-container *ngIf="page.empty">
+  <div class="caption">Nenhum registro atende aos criterios</div>
+</ng-container>
 
 
 <div class="d-flex justify-content-center">

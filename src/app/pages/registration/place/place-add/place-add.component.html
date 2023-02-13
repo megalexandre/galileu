@@ -12,12 +12,7 @@
           <div class="row mb-3">
 
             <div class="col-12">
-
-              <label for="number" class="label">Endereço:</label>
-              <nb-select placeholder="Endereço" formControlName='address' fullWidth [status]="getStatus('address')">
-                <nb-option [value]="item" *ngFor="let item of adresses">{{item.name}}</nb-option>
-              </nb-select>
-
+              <ngx-select-address [status]="getStatus('address')" (selectAddress)="selectAddress($event)"></ngx-select-address>
               <error-message [message]="'Endereço é obrigatório'" [show]="(address.errors?.required && (submmited || this.form.touched))"></error-message>
             </div>
 
@@ -27,13 +22,13 @@
 
             <div class="col-md-6 col-12">
               <label for="number" class="label">Número:</label>
-              <input id="number" type="number" nbInput fullWidth placeholder="Número:" formControlName="number"  [status]="getStatus('number')">
+              <input id="number" mask="0*" nbInput fullWidth placeholder="Número:" formControlName="number"  [status]="getStatus('number')">
               <error-message [message]="'Número é obrigatório'" [show]="(number.errors?.required && (submmited || this.form.touched))"></error-message>
             </div>
 
             <div class="col-md-6 col-12">
               <label for="letter" class="label">Letra:</label>
-              <input id="letter" type="text" nbInput fullWidth placeholder="Letra:" formControlName="letter"  [status]="getStatus('letter')">
+              <input id="letter" type="text" mask="A*" nbInput fullWidth placeholder="Letra:" formControlName="letter"  [status]="getStatus('letter')">
               <error-message [message]="'Letra é obrigatório'" [show]="(letter.errors?.required && (submmited || this.form.touched))"></error-message>
             </div>
 

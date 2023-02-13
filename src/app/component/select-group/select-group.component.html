@@ -42,6 +42,7 @@
 
   </nb-card-body>
 
+   <!--
   <nb-card-body *ngIf="place === null">
 
     <ngx-app-table [nbSpinner]="loading">
@@ -50,19 +51,16 @@
 
           <th class="col-9 align-middle" (click)="order('name')">
               Nome:
-              <!--
 
                 <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
                 <nb-icon *ngIf="filter.sortedField === 'name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
-              -->
           </th>
 
           <th colspan="2" class="col-2 align-middle" (click)="order('document')">
             Documento:
-            <!--
+
               <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
               <nb-icon *ngIf="filter.sortedField === 'document' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
-            -->
           </th>
 
         </tr>
@@ -72,9 +70,8 @@
         <tr>
 
           <th>
-            <!--
               <input type="text" nbInput placeholder="Nome" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.address.name">
-            -->
+
           </th>
 
           <th colspan="2">
@@ -110,5 +107,5 @@
     </ngx-app-table>
 
   </nb-card-body>
-
+   -->
 </nb-card>

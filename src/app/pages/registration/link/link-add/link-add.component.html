@@ -1,6 +1,6 @@
 <nb-card>
   <nb-card-body>
-    <nb-stepper orientation="horizontal">
+    <nb-stepper orientation="horizontal" [linear]="true" disableStepNavigation>
 
       <nb-step [label]="labelOne" >
         <ng-template #labelOne>Usuário</ng-template>
@@ -10,7 +10,7 @@
         <hr/>
 
         <div class="d-flex justify-content-between">
-          <button nbButton disabled nbStepperNext>Voltar</button>
+          <button nbButton disabled nbStepperPrevious>Voltar</button>
           <button nbButton nbStepperNext [disabled]="customer.invalid">Avançar</button>
         </div>
 
@@ -20,11 +20,11 @@
         <ng-template #labelTwo>Endereço</ng-template>
 
         <hr/>
-        <ngx-select-place (selectPlace)="selectPlace($event)" ></ngx-select-place>
+          <ngx-select-place (selectPlace)="selectPlace($event)" ></ngx-select-place>
         <hr/>
 
         <div class="d-flex justify-content-between">
-          <button nbButton disabled nbStepperNext>Voltar</button>
+          <button nbButton nbStepperPrevious>Voltar</button>
           <button nbButton nbStepperNext [disabled]="place.invalid">Avançar</button>
         </div>
       </nb-step>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Address } from '@model/default/address';
 import { Place } from '@model/default/place';
 import { PlaceFilter } from '@model/filter/place-filter';
 import { Page } from '@model/page';
@@ -48,6 +49,10 @@ export class PlaceListComponent implements OnInit {
     this.router.navigate(['../delete'],{relativeTo: this.activatedRoute})
   }
 
+  public selectAddress(address: Address){
+    this.filter.address = address
+    this.search()
+  }
 
   public order(field: string){
     this.filter.sortedField = field

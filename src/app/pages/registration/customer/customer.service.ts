@@ -1,30 +1,19 @@
-import { Observable } from 'rxjs';
-import { environment } from '@env/environment';
-import { Injectable } from '@angular/core';
-import { Page } from '@model/page';
-import { Customer } from '@model/default/customer';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from '@env/environment';
+import { Customer } from '@model/default/customer';
 import { CustomerFilter } from '@model/filter/customer-filter';
+import { DefaultService } from 'app/@shared/default.service';
 
 @Injectable()
-export class CustomerService {
+export class CustomerService extends DefaultService<Customer, CustomerFilter> {
 
-  constructor(private http: HttpClient) { }
-
-  public getPage(filter: CustomerFilter): Observable<Page<Customer>>{
-      return this.http.post<Page<Customer>>(`${environment.customer.paginate}`, filter);
+  public get env(): string {
+    return `${environment.customer}`
   }
 
-  public getById(id: string): Observable<Customer>{
-    return this.http.get<Customer>(`${environment.customer.byId}${id}`);
-  }
-
-  public save(customer: Customer): Observable<Customer>{
-    return this.http.post<Customer>(`${environment.customer.save}`, customer);
-  }
-
-  public update(customer: Customer): Observable<Customer>{
-    return this.http.put<Customer>(`${environment.customer.update}`, customer);
+  constructor(http: HttpClient) {
+    super(http)
   }
 
 }

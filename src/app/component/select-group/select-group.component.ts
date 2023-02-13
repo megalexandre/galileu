@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Group } from '@model/default/group';
-import { Place } from '@model/default/place';
 import { GroupFilter } from '@model/filter/group-filter';
 import { Page } from '@model/page';
 import { GroupService } from 'app/pages/registration/group/group.service';

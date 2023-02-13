@@ -1,3 +1,4 @@
+import { ComponentModule } from 'app/component/component.module';
 import { AddressService } from './../address/address.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -30,6 +31,7 @@ import { PlaceService } from './place.service';
     NbFormFieldModule,
     NgxMaskModule.forChild(),
     NbSelectModule,
+    ComponentModule,
   ],
   declarations: [
     PlaceComponent,
