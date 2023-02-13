@@ -13,6 +13,11 @@ const routes: Routes = [
           .then(m => m.CustomerModule),
       },
       {
+        path: 'group',
+        loadChildren: () => import('./group/group.module')
+          .then(m => m.GroupModule),
+      },
+      {
         path: 'address',
         loadChildren: () => import('./address/address.module')
           .then(m => m.AddressModule),

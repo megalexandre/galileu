@@ -1,0 +1,73 @@
+<form [formGroup]="form" (submit)="submit()">
+  <div class="row">
+    <div class="col-lg-12">
+      <nb-card>
+
+        <nb-card-header>
+          Novo Grupo
+        </nb-card-header>
+
+        <nb-card-body>
+
+          <div class="row mb-3">
+
+            <div class="col-md-6 col-12">
+              <label for="value" class="label">Categoria:</label>
+              <nb-select placeholder="Categoria"
+                id="category" type="text" fullWidth placeholder="Categoria:" formControlName="category"  [status]="getStatus('category')">
+                <nb-option [value]='null'>Selecione</nb-option>
+                <nb-option value="Fundador">Fundador</nb-option>
+                <nb-option value="Efetivo">Efetivo</nb-option>
+                <nb-option value="Temporário">Temporário</nb-option>
+              </nb-select>
+
+              <error-message [message]="'Categoria é obrigatório'" [show]="(category.errors?.required && (submmited || this.form.touched))"></error-message>
+            </div>
+
+
+
+            <div class="col-md-6 col-12">
+              <label for="value" class="label">Valor:</label>
+
+              <input
+                id="value"
+                nbInput fullWidth placeholder="value:" formControlName="value"  [status]="getStatus('value')"
+                mask="separator.2"
+                [thousandSeparator]="'.'"
+                [decimalMarker]="','"
+                prefix="R$ "
+                type="text"
+                [dropSpecialCharacters]="true"
+                >
+              <error-message [message]="'Valor é obrigatório'" [show]="(value.errors?.required && (submmited || this.form.touched))"></error-message>
+            </div>
+
+            <div class="col-12">
+              <label for="name" class="label">Nome:</label>
+              <input id="name" type="text" nbInput fullWidth placeholder="Nome:" formControlName="name"  [status]="getStatus('name')">
+              <error-message [message]="'Nome é obrigatório'" [show]="(name.errors?.required && (submmited || this.form.touched))"></error-message>
+            </div>
+
+          </div>
+
+
+        </nb-card-body>
+        <nb-card-footer>
+
+          <div class="d-flex justify-content-between">
+            <button type="button" nbButton outline status="basic" (click)="back()">
+              <nb-icon icon="arrow-back-outline"></nb-icon>
+            </button>
+
+            <button type="submit" nbButton outline status="success">
+              <nb-icon icon="save-outline"></nb-icon>
+            </button>
+          </div>
+
+        </nb-card-footer>
+      </nb-card>
+
+    </div>
+
+  </div>
+</form>

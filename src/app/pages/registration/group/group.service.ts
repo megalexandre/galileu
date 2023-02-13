@@ -1,30 +1,19 @@
-import { Observable } from 'rxjs';
-import { environment } from '@env/environment';
-import { Injectable } from '@angular/core';
-import { Page } from '@model/page';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from '@env/environment';
 import { Group } from '@model/default/group';
 import { GroupFilter } from '@model/filter/group-filter';
+import { DefaultService } from 'app/@shared/default.service';
 
 @Injectable()
-export class GroupService {
+export class GroupService extends DefaultService<Group, GroupFilter> {
 
-  constructor(private http: HttpClient) { }
-
-  public getPage(filter: GroupFilter): Observable<Page<Group>>{
-      return this.http.post<Page<Group>>(`${environment.group.paginate}`, filter);
+  public get env(): string {
+    return `${environment.group}`
   }
 
-  public getById(id: string): Observable<Group>{
-    return this.http.get<Group>(`${environment.group.byId}${id}`);
-  }
-
-  public save(group: Group): Observable<Group>{
-    return this.http.post<Group>(`${environment.group.save}`, group);
-  }
-
-  public update(group: Group): Observable<Group>{
-    return this.http.put<Group>(`${environment.group.update}`, group);
+  constructor(http: HttpClient) {
+    super(http)
   }
 
 }

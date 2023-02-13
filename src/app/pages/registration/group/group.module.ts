@@ -5,10 +5,15 @@ import { NbButtonModule, NbCardModule, NbFormFieldModule, NbIconModule, NbInputM
 import { AcalModule } from 'app/@acal/acal.module';
 import { PipeModule } from 'app/@pipe/pipe.module';
 import { NgxMaskModule } from 'ngx-mask';
+import { GroupListComponent } from './group-list/group-list.component';
+import { GroupRoutingModule } from './group-routing.module';
+import { GroupComponent } from './group.component';
 import { GroupService } from './group.service';
+import { GroupAddComponent } from './group-add/group-add.component';
 
 @NgModule({
   imports: [
+    GroupRoutingModule,
     CommonModule,
     NbCardModule,
     NbInputModule,
@@ -24,9 +29,12 @@ import { GroupService } from './group.service';
     NbSelectModule,
   ],
   declarations: [
+    GroupComponent,
+    GroupListComponent,
+    GroupAddComponent,
   ],
   providers: [
     GroupService,
   ]
 })
-export class PlaceModule { }
+export class GroupModule { }

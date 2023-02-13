@@ -11,19 +11,13 @@ export const environment = {
 
   customer: `${baseUrl + 'customer'}`,
   address: `${baseUrl + 'address'}`,
+  group: `${baseUrl + 'group'}`,
 
   place: {
     paginate: baseUrl + 'place/paginate',
     save: baseUrl + 'place',
     update: baseUrl + 'place/update',
     byId: baseUrl+ `place/`
-  },
-
-  group: {
-    paginate: baseUrl + 'group/paginate',
-    save: baseUrl + 'group',
-    update: baseUrl + 'group/update',
-    byId: baseUrl+ `group/`
   },
 
   link: {

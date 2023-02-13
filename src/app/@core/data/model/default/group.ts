@@ -6,6 +6,5 @@ export interface Group {
 }
 
 export interface Category {
-  id: string,
-  number: number,
+  name: 'Fundador'|'Efetivo'|'Temporário',
 }
