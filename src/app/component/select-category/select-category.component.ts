@@ -5,7 +5,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './select-category.component.html',
   styleUrls: ['./select-category.component.scss']
 })
-export class SelectCategoryComponent implements OnInit {
+export class SelectCategoryComponent {
 
   @Input()
   public category: string;
@@ -17,9 +17,6 @@ export class SelectCategoryComponent implements OnInit {
   public selectCategory = new EventEmitter()
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   selectedChange(){
     this.selectCategory.emit(this.category)

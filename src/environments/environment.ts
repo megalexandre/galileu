@@ -1,12 +1,11 @@
-const baseUrl = 'http://191.101.14.51:8080/';
+export const baseUrl = 'http://191.101.14.51:8080/';
 
 export const environment = {
   production: false,
-  baseUrl: baseUrl,
 
   auth:{
-    login: baseUrl + 'auth/login',
-    logout:  baseUrl + 'auth/logout',
+    login: `auth/login`,
+    logout: `auth/logout`,
   },
 
   customer: `${baseUrl + 'customer'}`,

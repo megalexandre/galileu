@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment.prod';
+import { baseUrl, environment } from './../../environments/environment';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NbAuthJWTToken, NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy } from '@nebular/auth';
@@ -100,7 +100,7 @@ export const NB_CORE_PROVIDERS = [
           key: 'token',
         },
 
-        baseEndpoint: environment.baseUrl,
+        baseEndpoint: baseUrl,
 
         login: {
             endpoint: environment.auth.login,
