@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Group } from '@model/default/group';
+import { Category, Group } from '@model/default/group';
 import { GroupFilter } from '@model/filter/group-filter';
 import { Page } from '@model/page';
 import { DataService } from 'app/@shared/data.service';
@@ -50,6 +50,10 @@ export class GroupListComponent implements OnInit {
     this.router.navigate(['../delete'],{relativeTo: this.activatedRoute})
   }
 
+  public selectCategory(category: Category){
+    this.filter.category = category;
+    this.search();
+  }
 
   public order(field: string){
     this.filter.sortedField = field

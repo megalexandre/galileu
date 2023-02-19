@@ -47,7 +47,7 @@
 
             <div class="col-md-6 col-12">
               <label for="birthDay" class="label">Data de Nascimento:</label>
-              <input id="birthDay" mask="00/00/0000" type="text" nbInput fullWidth placeholder="Data de Nascimento:" formControlName="birthDay" [status]="getStatus('birthDay')">
+              <ngx-input-date (date)="selectDate($event)" placeholder="Data de Nascimento:" [status]="getStatus('birthDay')"></ngx-input-date>
               <error-message [message]="'Esse data não é valida'" [show]="(birthDay.errors?.dateNotValid && (submmited || this.form.touched))"></error-message>
             </div>
 

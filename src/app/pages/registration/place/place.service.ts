@@ -1,30 +1,19 @@
-import { Observable } from 'rxjs';
-import { environment } from '@env/environment';
-import { Injectable } from '@angular/core';
-import { Page } from '@model/page';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from '@env/environment';
 import { Place } from '@model/default/place';
 import { PlaceFilter } from '@model/filter/place-filter';
+import { DefaultService } from 'app/@shared/default.service';
 
 @Injectable()
-export class PlaceService {
+export class PlaceService extends DefaultService<Place, PlaceFilter> {
 
-  constructor(private http: HttpClient) { }
-
-  public getPage(filter: PlaceFilter): Observable<Page<Place>>{
-      return this.http.post<Page<Place>>(`${environment.place.paginate}`, filter);
+  public get env(): string {
+    return `${environment.place}`
   }
 
-  public getById(id: string): Observable<Place>{
-    return this.http.get<Place>(`${environment.place.byId}${id}`);
-  }
-
-  public save(place: Place): Observable<Place>{
-    return this.http.post<Place>(`${environment.place.save}`, place);
-  }
-
-  public update(place: Place): Observable<Place>{
-    return this.http.put<Place>(`${environment.place.update}`, place);
+  constructor(http: HttpClient) {
+    super(http)
   }
 
 }

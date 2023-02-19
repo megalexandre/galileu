@@ -1,4 +1,3 @@
-import { filter } from 'rxjs/operators';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Address } from '@model/default/address';
 import { AddressService } from 'app/pages/registration/address/address.service';

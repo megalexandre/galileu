@@ -1,19 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Address } from '@model/default/address';
+import { Category } from '@model/default/group';
 import { Link } from '@model/default/link';
 import { LinkFilter } from '@model/filter/link-filter';
 import { Page } from '@model/page';
 import { DataService } from 'app/@shared/data.service';
-import { LinkService } from '../link-service.service';
+import { LinkService } from '../link.service';
 
 @Component({
   selector: 'ngx-link-list',
   templateUrl: './link-list.component.html',
-  styleUrls: ['./link-list.component.scss']
 })
 export class LinkListComponent implements OnInit {
 
   public filter: LinkFilter = {
+
+    group: {},
+    customer: {},
+    place: {
+      number: null,
+      letter: null,
+      address: {name: "", id:"" },
+    },
+    personType: 'PERSON',
     page: 0,
     pageSize: 10,
     direction: 'ASC',
@@ -29,6 +39,11 @@ export class LinkListComponent implements OnInit {
     private router: Router,
     private data: DataService,
     ){
+  }
+
+  selectCategory(category: Category){
+    this.filter.group.category = category;
+    this.search();
   }
 
   ngOnInit(): void {
@@ -48,6 +63,20 @@ export class LinkListComponent implements OnInit {
     this.router.navigate(['../delete'],{relativeTo: this.activatedRoute})
   }
 
+  public selectAddress(address: Address){
+    this.filter.place.address = address;
+    this.search();
+  }
+
+  public togglePersonType(){
+
+    this.filter.personType = null;
+    if(this.filter.personType === 'LEGAL'){
+      this.filter.personType = 'PERSON'
+    } else {
+      this.filter.personType = 'LEGAL'
+    }
+  }
 
   public order(field: string){
     this.filter.sortedField = field

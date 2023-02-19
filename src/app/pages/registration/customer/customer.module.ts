@@ -1,3 +1,4 @@
+import { ComponentModule } from 'app/component/component.module';
 import { NgxMaskModule } from 'ngx-mask';
 import { PipeModule } from './../../../@pipe/pipe.module';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -27,6 +28,7 @@ import { CustomerDeleteComponent } from './customer-delete/customer-delete.compo
     NbIconModule,
     PipeModule,
     NbFormFieldModule,
+    ComponentModule,
     NgxMaskModule.forChild(),
   ],
   declarations: [

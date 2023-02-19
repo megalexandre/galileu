@@ -10,6 +10,9 @@ export class AppTableComponent {
   @Input()
   tableSize: string = "table-sm"
 
+  @Input()
+  tableStriped: boolean = true
+
   constructor() { }
 
 }

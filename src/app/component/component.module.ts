@@ -1,20 +1,21 @@
-import { PlaceService } from './../pages/registration/place/place.service';
-import { SelectPlaceComponent } from './select-place/select-place.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NbButtonModule, NbCardModule, NbFormFieldModule, NbIconModule, NbInputModule, NbSelectModule, NbSpinnerModule } from '@nebular/theme';
+import { AddressService } from 'app/pages/registration/address/address.service';
+import { GroupService } from 'app/pages/registration/group/group.service';
+import { NgxMaskModule } from 'ngx-mask';
+import { AcalModule } from './../@acal/acal.module';
 import { PipeModule } from './../@pipe/pipe.module';
 import { CustomerService } from './../pages/registration/customer/customer.service';
-import { AcalModule } from './../@acal/acal.module';
-import { NbCardModule, NbFormFieldModule, NbIconModule, NbSpinnerModule, NbInputModule, NbButtonModule, NbSelectModule } from '@nebular/theme';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SelectUserComponent } from './select-user/select-user.component';
-import { NgxMaskModule } from 'ngx-mask';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GroupService } from 'app/pages/registration/group/group.service';
+import { PlaceService } from './../pages/registration/place/place.service';
 import { SelectAddressComponent } from './select-address/select-address.component';
-import { AddressService } from 'app/pages/registration/address/address.service';
+import { SelectCategoryComponent } from './select-category/select-category.component';
 import { SelectGroupComponent } from './select-group/select-group.component';
-
-
+import { SelectPlaceComponent } from './select-place/select-place.component';
+import { SelectUserComponent } from './select-user/select-user.component';
+import { InputCurrencyComponent } from './input-currency/input-currency.component';
+import { InputDateComponent } from './input-date/input-date.component';
 
 @NgModule({
   imports: [
@@ -37,12 +38,18 @@ import { SelectGroupComponent } from './select-group/select-group.component';
     SelectUserComponent,
     SelectPlaceComponent,
     SelectAddressComponent,
+    SelectCategoryComponent,
+    InputCurrencyComponent,
+    InputDateComponent,
   ],
   exports:[
     SelectGroupComponent,
     SelectUserComponent,
     SelectPlaceComponent,
     SelectAddressComponent,
+    SelectCategoryComponent,
+    InputCurrencyComponent,
+    InputDateComponent,
   ],
   providers:[
     AddressService,

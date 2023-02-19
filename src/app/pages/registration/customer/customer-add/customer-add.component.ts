@@ -69,6 +69,10 @@ export class CustomerAddComponent implements OnInit {
     )
   }
 
+  public selectDate(date: any){
+    this.birthDay.value(date);
+  }
+
   public back(){
     this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
   }

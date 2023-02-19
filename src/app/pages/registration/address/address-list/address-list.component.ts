@@ -61,7 +61,6 @@ export class AddressListComponent implements OnInit {
     this.search();
   }
 
-
   public paginate(page: number){
     this.filter.page = page;
     this.search('paginate');

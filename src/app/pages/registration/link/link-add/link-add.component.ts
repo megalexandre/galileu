@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '@model/default/customer';
+import { Group } from '@model/default/group';
 import { Place } from '@model/default/place';
 import { NbToastrService } from '@nebular/theme';
-import { LinkService } from '../link-service.service';
+import { LinkService } from '../link.service';
 
 @Component({
   selector: 'ngx-link-add',
@@ -13,8 +14,9 @@ import { LinkService } from '../link-service.service';
 })
 export class LinkAddComponent implements OnInit {
 
-  form: FormGroup;
+  public form: FormGroup;
   public submmited: boolean = false;
+  public index: string = 'usuario';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,8 +30,8 @@ export class LinkAddComponent implements OnInit {
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({
-      name: [null, Validators.required],
       customer: [null, Validators.required],
+      group: [null, Validators.required],
       place: [null, Validators.required],
     })
   }
@@ -40,6 +42,10 @@ export class LinkAddComponent implements OnInit {
 
   public selectPlace(place: Place){
     this.place.setValue(place)
+  }
+
+  public selectGroup(group: Group){
+    this.group.setValue(group)
   }
 
   public submit(){
@@ -76,10 +82,6 @@ export class LinkAddComponent implements OnInit {
     return 'basic'
   }
 
-  get name(): AbstractControl {
-    return this.form.get('name')
-  }
-
   get customer(): AbstractControl {
     return this.form.get('customer')
   }
@@ -87,5 +89,11 @@ export class LinkAddComponent implements OnInit {
   get place(): AbstractControl {
     return this.form.get('place')
   }
+
+  get group(): AbstractControl {
+    return this.form.get('group')
+  }
+
+
 
 }

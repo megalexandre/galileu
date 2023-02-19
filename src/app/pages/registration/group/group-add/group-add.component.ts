@@ -1,3 +1,4 @@
+import { Category } from '@model/default/group';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -48,6 +49,14 @@ export class GroupAddComponent implements OnInit {
       }
 
     )
+  }
+
+  selectCategory(category: Category){
+    this.category.setValue(category)
+  }
+
+  selectCurrency(value: number){
+    this.value.setValue(value)
   }
 
   public back(){

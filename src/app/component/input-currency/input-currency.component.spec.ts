@@ -1,21 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManagementComponent } from './management.component';
+import { InputCurrencyComponent } from './input-currency.component';
 
-describe('ManagementComponent', () => {
-
-  let component: ManagementComponent;
-  let fixture: ComponentFixture<ManagementComponent>;
+describe('InputCurrencyComponent', () => {
+  let component: InputCurrencyComponent;
+  let fixture: ComponentFixture<InputCurrencyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManagementComponent ],
+      declarations: [ InputCurrencyComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManagementComponent);
+    fixture = TestBed.createComponent(InputCurrencyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,5 +22,4 @@ describe('ManagementComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

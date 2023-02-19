@@ -42,7 +42,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/registration/address',
       },
       {
-        title: 'Locais',
+        title: 'Endereços',
         link: '/pages/registration/place',
       },
       {

@@ -6,5 +6,5 @@ export interface Group {
 }
 
 export interface Category {
-  name: 'Fundador'|'Efetivo'|'Temporário',
+  name: 'FOUNDER'|'EFFECTIVE'|'TEMPORARY',
 }

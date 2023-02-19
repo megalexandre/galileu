@@ -10,6 +10,8 @@ import { GroupRoutingModule } from './group-routing.module';
 import { GroupComponent } from './group.component';
 import { GroupService } from './group.service';
 import { GroupAddComponent } from './group-add/group-add.component';
+import { GroupEditComponent } from './group-edit/group-edit.component';
+import { ComponentModule } from 'app/component/component.module';
 
 @NgModule({
   imports: [
@@ -24,6 +26,7 @@ import { GroupAddComponent } from './group-add/group-add.component';
     ReactiveFormsModule,
     NbIconModule,
     PipeModule,
+    ComponentModule,
     NbFormFieldModule,
     NgxMaskModule.forChild(),
     NbSelectModule,
@@ -32,6 +35,7 @@ import { GroupAddComponent } from './group-add/group-add.component';
     GroupComponent,
     GroupListComponent,
     GroupAddComponent,
+    GroupEditComponent,
   ],
   providers: [
     GroupService,

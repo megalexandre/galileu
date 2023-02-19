@@ -5,7 +5,7 @@ import { Page } from '@model/page';
 import { GroupService } from 'app/pages/registration/group/group.service';
 
 @Component({
-  selector: 'ngx-group-place',
+  selector: 'ngx-select-group',
   templateUrl: './select-group.component.html',
   styleUrls: ['./select-group.component.scss']
 })
@@ -16,10 +16,12 @@ export class SelectGroupComponent implements OnInit{
   public group: Group = null;
 
   public filter: GroupFilter = {
+    name: '',
     page: 0,
+    category: null,
     pageSize: 10,
     direction: 'ASC',
-    sortedField: 'number'
+    sortedField: 'name'
   };
 
   public page: Page<Group>;
@@ -34,6 +36,16 @@ export class SelectGroupComponent implements OnInit{
     this.search();
   }
 
+  public emitGroup(group: Group){
+    this.group = group
+    this.selectGroup.emit(group)
+  }
+
+  public clearGroup(){
+    this.group = null
+    this.selectGroup.emit(null)
+  }
+
 
   public order(field: string){
     this.filter.sortedField = field
@@ -45,17 +57,6 @@ export class SelectGroupComponent implements OnInit{
 
     this.search();
   }
-
-  public select(group: Group){
-    this.group = group
-    this.selectGroup.emit(group)
-  }
-
-  public clear(){
-    this.group = null
-    this.selectGroup.emit(null)
-  }
-
 
   public paginate(page: number){
     this.filter.page = page;

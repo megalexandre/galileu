@@ -9,17 +9,17 @@ const routes: Routes = [
     component: FinancialComponent,
     children: [
       {
-        path: 'management',
-        loadChildren: () => import('./management/management.module')
-          .then(m => m.ManagementModule),
+        path: 'generate-invoice',
+        loadChildren: () => import('./generate-invoice/generate-invoice.module')
+          .then(m => m.GenerateInvoiceModule),
       },
       {
         path: '',
-        redirectTo: 'management',
+        redirectTo: 'generate-invoice',
       },
       {
         path: '**',
-        redirectTo: 'management',
+        redirectTo: 'generate-invoice',
       },
     ],
   },

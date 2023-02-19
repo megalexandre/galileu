@@ -40,13 +40,7 @@
         <tr>
 
           <th>
-            <nb-select placeholder="Categoria"
-              id="category" type="text" fullWidth placeholder="Categoria:" [(ngModel)]="filter.category" (ngModelChange)="search()">
-              <nb-option [value]='null'>Selecione</nb-option>
-              <nb-option value="Fundador">Fundador</nb-option>
-              <nb-option value="Efetivo">Efetivo</nb-option>
-              <nb-option value="Temporário">Temporário</nb-option>
-            </nb-select>
+            <ngx-select-category (selectCategory)="selectCategory($event)"></ngx-select-category>
           </th>
 
           <th>
@@ -54,14 +48,7 @@
           </th>
 
           <th>
-            <input type="text" nbInput placeholder="Valor" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.value"
-              mask="separator.2"
-              [thousandSeparator]="'.'"
-              [decimalMarker]="','"
-              prefix="R$ "
-              type="text"
-              [dropSpecialCharacters]="true"
-            >
+            <ngx-input-currency [(currency)]="filter.value" placeholder="Valor" (keydown.enter)="search()" ></ngx-input-currency>
           </th>
 
           <th colspan="2">
@@ -75,7 +62,7 @@
 
       <tbody >
         <tr *ngFor="let item of page?.content">
-          <td class="align-middle">{{item.category}}</td>
+          <td class="align-middle">{{item.category | category}}</td>
           <td class="align-middle">{{item.name}}</td>
           <td class="align-middle">{{item.value | currency}}</td>
 
@@ -95,9 +82,9 @@
 
       <tfoot>
         <tr>
-          <td colspan="4" *ngIf="page">
-              <ngx-app-table-footer [page]="page" (search)="paginate($event)">
-              </ngx-app-table-footer>
+          <td colspan="5" *ngIf="page">
+            <ngx-app-table-footer [page]="page" (search)="paginate($event)">
+            </ngx-app-table-footer>
           </td>
         </tr>
       </tfoot>

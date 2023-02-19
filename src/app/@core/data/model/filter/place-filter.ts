@@ -1,8 +1,8 @@
-import { Address } from "@model/default/address";
+import { AddressFilter } from "./address-filter";
 import { DefaultFilter } from "./default-filter";
 
 export interface PlaceFilter extends DefaultFilter {
   number?: string,
   letter?: string,
-  address?: Address,
+  address?: AddressFilter,
 }

@@ -16,12 +16,12 @@ export abstract class DefaultService <D, F> {
     return this.http.get<D>(`${this.env+'/'}${id}`);
   }
 
-  public save(customer: D): Observable<D>{
-    return this.http.post<D>(`${this.env}`, customer);
+  public save(d: D): Observable<D>{
+    return this.http.post<D>(`${this.env}`, d);
   }
 
-  public update(customer: D): Observable<D>{
-    return this.http.put<D>(`${this.env+'/update'}`, customer);
+  public update(d: D): Observable<D>{
+    return this.http.put<D>(`${this.env+'/update'}`, d);
   }
 
   public getAll(): Observable<D[]>{

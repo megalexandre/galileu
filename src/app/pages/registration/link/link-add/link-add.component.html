@@ -2,8 +2,8 @@
   <nb-card-body>
     <nb-stepper orientation="horizontal" [linear]="true" disableStepNavigation>
 
-      <nb-step [label]="labelOne" >
-        <ng-template #labelOne>Usuário</ng-template>
+      <nb-step [label]="usuario" >
+        <ng-template #usuario>Usuário</ng-template>
 
         <hr/>
         <ngx-select-user (selectCustomer)="selectCustomer($event)"></ngx-select-user>
@@ -11,40 +11,45 @@
 
         <div class="d-flex justify-content-between">
           <button nbButton disabled nbStepperPrevious>Voltar</button>
-          <button nbButton nbStepperNext [disabled]="customer.invalid">Avançar</button>
+          <button nbButton nbStepperNext [disabled]="customer.invalid" (click)="index = 'endereco'">Avançar</button>
         </div>
-
       </nb-step>
 
-      <nb-step [label]="labelTwo">
-        <ng-template #labelTwo>Endereço</ng-template>
+      <nb-step [label]="endereco">
+        <ng-template #endereco>Endereço</ng-template>
 
         <hr/>
           <ngx-select-place (selectPlace)="selectPlace($event)" ></ngx-select-place>
         <hr/>
 
         <div class="d-flex justify-content-between">
-          <button nbButton nbStepperPrevious>Voltar</button>
-          <button nbButton nbStepperNext [disabled]="place.invalid">Avançar</button>
+          <button nbButton nbStepperPrevious (click)="index = 'usuario'">Voltar</button>
+          <button nbButton nbStepperNext [disabled]="place.invalid" (click)="index = 'categoria'">Avançar</button>
         </div>
       </nb-step>
 
-      <nb-step label="Categoria">
-        <h4>Selecionar a categoria</h4>
-        <p class="lorem">
-          Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
-          Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
-          gravida vizzle, dang.
-        </p>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton nbStepperNext>next</button>
+      <nb-step [label]="categoria">
+         <ng-template #categoria>Categoria</ng-template>
+
+        <hr/>
+          <ngx-select-group (selectGroup)="selectGroup($event)" ></ngx-select-group>
+        <hr/>
+
+        <div class="d-flex justify-content-between">
+          <button nbButton nbStepperPrevious (click)="index='endereco'">Voltar</button>
+          <button nbButton nbStepperNext [disabled]="group.invalid"  (click)="index='review'">Avançar</button>
+        </div>
       </nb-step>
 
-      <nb-step [label]="labelFour">
-        <ng-template #labelFour>Revisão</ng-template>
+      <nb-step [label]="review">
+        <ng-template #review>Revisão</ng-template>
 
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton disabled nbStepperNext>next</button>
+        <ngx-link-review [link]="this.form.value" *ngIf="index === 'review'"></ngx-link-review>
+
+        <div class="d-flex justify-content-between">
+          <button nbButton nbStepperPrevious (click)="index='endereco'">Voltar</button>
+          <button nbButton nbStepperNext [disabled]="group.invalid" status="success" (click)="submit()" >Finalizar</button>
+        </div>
       </nb-step>
 
     </nb-stepper>

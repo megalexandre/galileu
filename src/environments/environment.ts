@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8080/';
+const baseUrl = 'http://191.101.14.51:8080/';
 
 export const environment = {
   production: false,
@@ -12,22 +12,8 @@ export const environment = {
   customer: `${baseUrl + 'customer'}`,
   address: `${baseUrl + 'address'}`,
   group: `${baseUrl + 'group'}`,
-
-  place: {
-    paginate: baseUrl + 'place/paginate',
-    save: baseUrl + 'place',
-    update: baseUrl + 'place/update',
-    byId: baseUrl+ `place/`
-  },
-
-  link: {
-    paginate: baseUrl + 'link/paginate',
-    save: baseUrl + 'link',
-    update: baseUrl + 'link/update',
-    byId: baseUrl+ `link/`
-  },
-
-
+  link: `${baseUrl + 'link'}`,
+  place: `${baseUrl + 'place'}`,
 
   management: {
     router: '/management',

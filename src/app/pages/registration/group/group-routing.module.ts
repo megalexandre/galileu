@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GroupAddComponent } from './group-add/group-add.component';
+import { GroupEditComponent } from './group-edit/group-edit.component';
 import { GroupListComponent } from './group-list/group-list.component';
 import { GroupComponent } from './group.component';
 
@@ -18,11 +19,11 @@ const routes: Routes = [
       path: 'add',
       component: GroupAddComponent
     },
-    /*
     {
       path: 'edit',
       component: GroupEditComponent
     },
+    /*
     {
       path: 'delete:id',
       component: GroupDeleteComponent

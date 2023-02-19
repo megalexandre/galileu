@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IdentificationPipe } from './identification.pipe';
+import { CategoryPipe } from './category.pipe';
 
 
 @NgModule({
@@ -8,10 +9,12 @@ import { IdentificationPipe } from './identification.pipe';
     CommonModule
   ],
   declarations: [
-    IdentificationPipe
+    IdentificationPipe,
+    CategoryPipe
   ],
   exports:[
-    IdentificationPipe
+    IdentificationPipe,
+    CategoryPipe
   ]
 })
 export class PipeModule { }
