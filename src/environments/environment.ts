@@ -1,4 +1,4 @@
-export const baseUrl = 'http://191.101.14.51:8080/';
+export const baseUrl = 'http://localhost:8080/';
 
 export const environment = {
   production: false,

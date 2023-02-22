@@ -1,4 +1,4 @@
-<h1 id="title" class="title">Sign In</h1>
+<h1 id="title" class="title">Logar</h1>
 
 <nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
   <p class="alert-title"><b>Oh snap!</b></p>
@@ -31,10 +31,7 @@
            [attr.aria-invalid]="email.invalid && email.touched ? true : null">
     <ng-container *ngIf="email.invalid && email.touched">
       <p class="caption status-danger" *ngIf="email.errors?.required">
-        Email is required!
-      </p>
-      <p class="caption status-danger" *ngIf="email.errors?.pattern">
-        Email should be the real one!
+        Usúario é obrigatorio!
       </p>
     </ng-container>
   </div>
@@ -56,7 +53,7 @@
            [attr.aria-invalid]="password.invalid && password.touched ? true : null">
     <ng-container *ngIf="password.invalid && password.touched ">
       <p class="caption status-danger" *ngIf="password.errors?.required">
-        Password is required!
+        Senha é obrigatorio!
       </p>
       <p class="caption status-danger" *ngIf="(password.errors?.minlength || password.errors?.maxlength)">
         Password should contains
@@ -77,7 +74,7 @@
           status="success"
           [disabled]="submitted || !form.valid"
           [class.btn-pulse]="submitted">
-    Sign In
+    Entrar
   </button>
 </form>
 
