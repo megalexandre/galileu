@@ -53,6 +53,10 @@ export class CustomerEditComponent implements OnInit {
 
   }
 
+  public setDate(date: string){
+    this.birthDay.setValue(date);
+  }
+
   public togglePersonType(){
 
     if(this.personTypeValue === 'LEGAL'){
@@ -118,8 +122,5 @@ export class CustomerEditComponent implements OnInit {
   get document(): AbstractControl {
     return this.form.get('document')
   }
-
-
-
 
 }

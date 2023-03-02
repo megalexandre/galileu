@@ -10,16 +10,4 @@ export class HomepageService {
   constructor(private http: HttpClient) {
   }
 
-
-  findAnalyticalDistribution(): Observable<BarItem[]> {
-    return this.http.get<BarItem[]>(`${environment.dashboard.routers.planAccount.analytical}`);
-  }
-
-  findSyntheticDistribution(): Observable<BarItem[]> {
-    return this.http.get<BarItem[]>(`${environment.dashboard.routers.planAccount.synthetic}`);
-  }
-
-  findPlanAccount(): Observable<BarItem[]> {
-    return this.http.get<BarItem[]>(`${environment.dashboard.routers.planAccount}`);
-  }
 }

@@ -1,4 +1,3 @@
-import { SearchComponent } from './../../../pages/ui-features/search-fields/search-fields.component';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Page } from '@model/page';
 

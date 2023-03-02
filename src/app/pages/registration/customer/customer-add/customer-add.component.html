@@ -4,7 +4,7 @@
       <nb-card>
 
         <nb-card-header>
-          Novo Úsuario
+          Novo Usuário
         </nb-card-header>
 
         <nb-card-body>
@@ -47,7 +47,7 @@
 
             <div class="col-md-6 col-12">
               <label for="birthDay" class="label">Data de Nascimento:</label>
-              <ngx-input-date (date)="selectDate($event)" placeholder="Data de Nascimento:" [status]="getStatus('birthDay')"></ngx-input-date>
+              <ngx-input-date (setDate)="setDate($event)" placeholder="Data de Nascimento:" [status]="getStatus('birthDay')"></ngx-input-date>
               <error-message [message]="'Esse data não é valida'" [show]="(birthDay.errors?.dateNotValid && (submmited || this.form.touched))"></error-message>
             </div>
 

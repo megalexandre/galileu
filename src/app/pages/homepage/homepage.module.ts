@@ -1,21 +1,21 @@
-import { DistributionModule } from './distribution/distribution.module';
-import { DistributionComponent } from './distribution/distribution.component';
+import { NbCardModule, NbListModule } from '@nebular/theme';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HomepageRoutingModule } from './homepage-routing.module';
 import { HomepageComponent } from './homepage.component';
 import { HomepageService } from './homepage.service';
-
-
+import { DetailComponent } from './detail/detail.component';
 @NgModule({
   imports: [
     CommonModule,
+    NbCardModule,
+    NbListModule,
     HomepageRoutingModule,
-    DistributionModule,
   ],
 
   declarations: [
     HomepageComponent,
+    DetailComponent,
   ],
 
   providers: [

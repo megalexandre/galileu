@@ -16,6 +16,10 @@ export abstract class DefaultService <D, F> {
     return this.http.get<D>(`${this.env+'/'}${id}`);
   }
 
+  public delete(id: string): Observable<D>{
+    return this.http.delete<D>(`${this.env+'/delete'}/${id}`);
+  }
+
   public save(d: D): Observable<D>{
     return this.http.post<D>(`${this.env}`, d);
   }
@@ -23,6 +27,7 @@ export abstract class DefaultService <D, F> {
   public update(d: D): Observable<D>{
     return this.http.put<D>(`${this.env+'/update'}`, d);
   }
+
 
   public getAll(): Observable<D[]>{
     return this.http.get<D[]>(`${this.env + '/list'}`);

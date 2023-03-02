@@ -19,7 +19,14 @@ describe('InputDateComponent', () => {
     fixture.detectChanges();
   });
 
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+it('should format data', () => {
+  component.date = "20200520"
+  component.emiteDate
+});
+
 });

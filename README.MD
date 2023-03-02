@@ -10,3 +10,4 @@ ngh --branch=gh-pages
 ng build --configuration production
 docker build -t alexandrequeiroz/acal-app:0.0.1 .
 docker push alexandrequeiroz/acal-app:0.0.1
+

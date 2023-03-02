@@ -62,15 +62,15 @@ export class CustomerAddComponent implements OnInit {
         this.toastrService.success(`Sucesso`, `Novo Registro adicionado`)
         this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
       },
-      () =>{
-        this.toastrService.danger(`Erro ao salvar`, `Não foi possivel realizar a ação`)
+      (error) =>{
+        this.toastrService.danger(error, `Não foi possivel realizar a ação`)
       }
 
     )
   }
 
-  public selectDate(date: any){
-    this.birthDay.value(date);
+  public setDate(date: string){
+    this.birthDay.setValue(date);
   }
 
   public back(){

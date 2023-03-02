@@ -1,1 +1,4 @@
-<input [(ngModel)]="date" (ngModelChange)="emiteDate()" mask="00/00/0000" type="text" nbInput fullWidth placeholder="Data de Nascimento:" [status]="status">
+<input
+  [(ngModel)]="date" (ngModelChange)="emiteDate()"
+  [dropSpecialCharacters]="false"
+  mask="00/00/0000" type="text" nbInput fullWidth placeholder="Data de Nascimento:" [status]="status">

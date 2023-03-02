@@ -24,7 +24,7 @@ const routes: Routes = [
       component: CustomerEditComponent
     },
     {
-      path: 'delete:id',
+      path: 'delete',
       component: CustomerDeleteComponent
     },
     { path: '', redirectTo: 'list', pathMatch: 'full' },

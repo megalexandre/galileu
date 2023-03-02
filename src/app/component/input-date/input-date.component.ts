@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'ngx-input-date',
@@ -14,10 +14,10 @@ export class InputDateComponent {
   public date?: string = null;
 
   @Output()
-  public dateChange: EventEmitter<string> = new EventEmitter<string>();
+  public setDate: EventEmitter<string> = new EventEmitter<string>();
 
   emiteDate() {
-    this.dateChange.emit(this.date)
+    this.setDate.emit(this.date.split('/').join('-'))
   }
 
 }
