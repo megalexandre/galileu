@@ -1,4 +1,6 @@
+import { Dashboard } from './../../../@core/data/model/default/dashboard';
 import { Component, OnInit } from '@angular/core';
+import { HomepageService } from '../homepage.service';
 
 @Component({
   selector: 'ngx-detail',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  public dashboard: Dashboard
+  public loaded: boolean = false
+
+  constructor(private service: HomepageService) {
+
+  }
 
   ngOnInit(): void {
+    this.service.get().subscribe(
+      (dashboard) =>{
+        this.dashboard = dashboard
+        this.loaded = true
+      }
+    )
   }
+
+
 
 }

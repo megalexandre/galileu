@@ -3,6 +3,8 @@ export const baseUrl = 'https://localhost:443/';
 export const environment = {
   production: false,
 
+  api: baseUrl,
+
   auth:{
     login: `auth/login`,
     logout: `auth/logout`,

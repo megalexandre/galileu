@@ -18,7 +18,7 @@
       <tbody >
         <tr>
           <td class="align-middle">
-            {{group.category}}
+            {{group.category | category}}
           </td>
 
           <td class="align-middle">
@@ -107,7 +107,7 @@
 
       <tbody >
         <tr *ngFor="let item of page?.content">
-          <td class="align-middle">{{item.category}}</td>
+          <td class="align-middle">{{item.category | category}}</td>
           <td class="align-middle">{{item.name}}</td>
           <td class="align-middle">{{item.value | currency}}</td>
 

@@ -41,6 +41,7 @@ export class GroupEditComponent implements OnInit {
         this.group = group;
 
         this.form = this.formBuilder.group({
+          id: [group.id],
           name: [group.name, Validators.required],
           category: [group.category, [Validators.required]],
           value: [group.value,  [Validators.required]],
@@ -49,6 +50,10 @@ export class GroupEditComponent implements OnInit {
       }
     )
 
+  }
+
+  selectCurrency(value: number){
+    this.value.setValue(value)
   }
 
   public selectCategory(category: Category){
@@ -62,7 +67,7 @@ export class GroupEditComponent implements OnInit {
       return
     }
 
-    this.service.save(this.form.value).subscribe(
+    this.service.update(this.form.value).subscribe(
       () => {
         this.toastrService.success(`Sucesso`, `Novo Registro adicionado`)
         this.router.navigate(['../list'],{relativeTo: this.activatedRoute})

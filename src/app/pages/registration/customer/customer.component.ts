@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
+import DateValidator from 'app/@validator/date.validator';
+import DocumentValidator from 'app/@validator/document.validator';
+import { CustomerService } from './customer.service';
 
 @Component({
   selector: 'ngx-customer',
@@ -6,6 +12,84 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent {
 
-  constructor() { }
+  public form: FormGroup;
+  public submmited: boolean = false;
+  public personTypeValue : 'PERSON'|'LEGAL' = 'PERSON';
+
+  constructor(
+    public formBuilder: FormBuilder,
+    public activatedRoute: ActivatedRoute,
+    public router: Router,
+    public service: CustomerService,
+    public toastrService: NbToastrService) {
+  }
+
+  createForm(): void {
+
+  }
+
+  public togglePersonType(){
+
+    if(this.personTypeValue === 'LEGAL'){
+      this.personTypeValue = 'PERSON'
+    } else {
+      this.personTypeValue = 'LEGAL'
+    }
+
+    this.personType.setValue(this.personTypeValue);
+    this.document.setValue(null);
+  }
+
+
+  public submit(){
+    this.submmited = true;
+
+    if(this.form.invalid){
+      return
+    }
+
+    this.commit();
+  }
+
+  public commit(){}
+
+  public setDate(date: string){
+    this.birthDay.setValue(date);
+  }
+
+  public back(){
+    this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
+  }
+
+  public getStatus(value: string): ('success'|'basic'|'danger') {
+
+    if(this.form.get(value).valid && (this.form.get(value).touched || (this.submmited) )){
+      return 'success'
+    } else if (!this.form.get(value).valid &&  (this.form.get(value).touched || (this.submmited))){
+      return 'danger'
+    }
+
+    return 'basic'
+  }
+
+  get name(): AbstractControl {
+    return this.form.get('name')
+  }
+
+  get personType(): AbstractControl {
+    return this.form.get('personType')
+  }
+
+  get birthDay(): AbstractControl {
+    return this.form.get('birthDay')
+  }
+
+  get phoneNumber(): AbstractControl {
+    return this.form.get('phoneNumber')
+  }
+
+  get document(): AbstractControl {
+    return this.form.get('document')
+  }
 
 }

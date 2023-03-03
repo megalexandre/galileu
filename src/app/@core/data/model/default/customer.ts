@@ -6,3 +6,4 @@ export interface Customer {
   birthDay: string,
   personType: 'PERSON'|'LEGAL'
 }
+

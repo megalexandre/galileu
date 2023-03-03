@@ -6,14 +6,14 @@
 
   <nb-card-body>
 
-    <div class="flex-container">
+    <div class="flex-container" *ngIf="loaded">
       <span>
-        <b>1950</b><br/>
+        <b>{{dashboard.totalCustomer}}</b><br/>
         Usúarios ativos
       </span>
 
       <span>
-        <b>650</b><br/>
+        <b>{{dashboard.totalLink}}</b><br/>
         Ligações
       </span>
 

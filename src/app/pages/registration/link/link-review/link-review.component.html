@@ -4,12 +4,11 @@
   </nb-card-header>
 
   <nb-card-body>
-
     <p>
       Uma ligação para o usúario <b>{{link.customer.name}}</b> de {{link.customer.personType === 'PERSON' ? 'C.P.F:': 'C.N.P.J:'}}
       número <b>{{link.customer.document | identification }}</b>,
       no endereço <b>{{link.place.address.name}}</b>, no número: <b>{{link.place.number}}</b> de letra <b>{{link.place.letter}}</b>,
-      na categoria: <b>{{link.group.category}}</b>, no grupo <b>{{link.group.name}}</b> no valor de <b>{{link.group.value | currency}}</b>
+      na categoria: <b>{{link.group.category | category}}</b>, no grupo <b>{{link.group.name}}</b> no valor de <b>{{link.group.value | currency}}</b>
     </p>
 
   </nb-card-body>
