@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Address } from '@model/default/address';
 import { Place } from '@model/default/place';
 import { PlaceFilter } from '@model/filter/place-filter';
@@ -11,6 +11,9 @@ import { PlaceService } from 'app/pages/registration/place/place.service';
   styleUrls: ['./select-place.component.scss']
 })
 export class SelectPlaceComponent implements OnInit{
+
+  @Input()
+  public title: String = ""
 
   @Output()
   public selectPlace = new EventEmitter()

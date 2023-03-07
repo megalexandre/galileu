@@ -14,8 +14,10 @@ import { LinkService } from '../link.service';
 })
 export class LinkListComponent implements OnInit {
 
+  public loaded = false;
   public filter: LinkFilter = {
 
+    active: true,
     group: {},
     customer: {},
     place: {
@@ -41,26 +43,30 @@ export class LinkListComponent implements OnInit {
     ){
   }
 
+  ngOnInit(): void {
+    this.search();
+    this.loaded = true
+  }
+
+
   selectCategory(category: Category){
     this.filter.group.category = category;
     this.search();
   }
 
-  ngOnInit(): void {
-    this.search();
-  }
 
   public add(){
     this.router.navigate(['../add'],{relativeTo: this.activatedRoute})
   }
 
-  public edit(id: string){
+  public view(id: string){
     this.data.setId = id
-    this.router.navigate(['../edit'],{relativeTo: this.activatedRoute})
+    this.router.navigate(['../view'],{relativeTo: this.activatedRoute})
   }
 
-  public remove(id: string){
-    this.router.navigate(['../delete'],{relativeTo: this.activatedRoute})
+  public inactive(id: string){
+    this.data.setId = id
+    this.router.navigate(['../inactive'],{relativeTo: this.activatedRoute})
   }
 
   public selectAddress(address: Address){

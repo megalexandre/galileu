@@ -5,6 +5,7 @@ import { HomepageRoutingModule } from './homepage-routing.module';
 import { HomepageComponent } from './homepage.component';
 import { HomepageService } from './homepage.service';
 import { DetailComponent } from './detail/detail.component';
+import { InvoicingComponent } from './invoicing/invoicing.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +17,7 @@ import { DetailComponent } from './detail/detail.component';
   declarations: [
     HomepageComponent,
     DetailComponent,
+    InvoicingComponent,
   ],
 
   providers: [

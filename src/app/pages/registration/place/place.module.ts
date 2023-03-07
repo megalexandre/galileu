@@ -3,7 +3,7 @@ import { AddressService } from './../address/address.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbButtonModule, NbCardModule, NbFormFieldModule, NbIconModule, NbInputModule, NbSelectModule, NbSpinnerModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbCheckboxModule, NbFormFieldModule, NbIconModule, NbInputModule, NbSelectModule, NbSpinnerModule } from '@nebular/theme';
 import { AcalModule } from 'app/@acal/acal.module';
 import { PipeModule } from 'app/@pipe/pipe.module';
 import { NgxMaskModule } from 'ngx-mask';
@@ -32,6 +32,7 @@ import { PlaceService } from './place.service';
     NgxMaskModule.forChild(),
     NbSelectModule,
     ComponentModule,
+    NbCheckboxModule,
   ],
   declarations: [
     PlaceComponent,

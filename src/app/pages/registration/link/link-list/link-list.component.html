@@ -5,6 +5,13 @@
   </nb-card-header>
 
   <nb-card-body>
+    <span *ngIf="loaded">
+      <ngx-link-filter [filter]="filter"></ngx-link-filter>
+    </span>
+
+  </nb-card-body>
+
+  <nb-card-body>
 
     <ngx-app-table [nbSpinner]="loading">
       <thead>
@@ -40,6 +47,11 @@
             <nb-icon *ngIf="filter.sortedField === 'place.address.name' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
           </th>
 
+          <th class="col-1 align-middle" (click)="order('place.number')">
+            Número:
+            <nb-icon *ngIf="filter.sortedField === 'place.number' && filter.direction === 'ASC'" icon="arrow-ios-upward-outline"></nb-icon>
+            <nb-icon *ngIf="filter.sortedField === 'place.number' && filter.direction === 'DESC'" icon="arrow-ios-downward-outline"></nb-icon>
+          </th>
 
           <th class="col-1 align-middle" (click)="order('group.value')">
             Valor:
@@ -93,6 +105,10 @@
           </th>
 
           <th>
+            <input type="text" nbInput placeholder="Número" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.place.number">
+          </th>
+
+          <th>
             <input type="text" nbInput placeholder="Valor" fullWidth (keydown.enter)="search()" [(ngModel)]="filter.group.value">
           </th>
 
@@ -106,23 +122,24 @@
       </thead>
 
       <tbody >
-        <tr *ngFor="let item of page?.content">
-          <td class="align-middle">{{item.customer.name}}</td>
+        <tr *ngFor="let item of page?.content" [ngClass]="{'table-danger': !item.active , 'table-light': item.active}">
+          <td class="align-middle">{{item.customer.name + item.active}}</td>
           <td class="align-middle">{{item.customer.document | identification}}</td>
           <td class="align-middle"><b>{{item.group.category | category}}</b></td>
           <td class="align-middle">{{item.group.name}}</td>
           <td class="align-middle">{{item.place.address.name}}</td>
+          <td class="align-middle">{{item.place.number}}</td>
           <td class="align-middle">{{item.group.value | currency }}</td>
 
           <td class="align-middle">
-            <button nbButton outline status="warning" fullWidth (click)="edit(item.id)">
-              <nb-icon icon="edit-2-outline"></nb-icon>
+            <button nbButton outline status="basic" fullWidth (click)="view(item.id)">
+              <nb-icon icon="eye-outline"></nb-icon>
             </button>
           </td>
 
           <td class="align-middle">
-            <button nbButton outline status="danger" fullWidth (click)="remove(item.id)" >
-              <nb-icon icon="trash-2-outline"></nb-icon>
+            <button nbButton outline status="danger" fullWidth (click)="inactive(item.id)" [disabled]="!item.active" >
+              <nb-icon icon="droplet-off-outline"></nb-icon>
             </button>
           </td>
         </tr>
@@ -130,7 +147,7 @@
 
       <tfoot>
         <tr>
-          <td colspan="8" *ngIf="page">
+          <td colspan="9" *ngIf="page">
               <ngx-app-table-footer [page]="page" (search)="paginate($event)">
               </ngx-app-table-footer>
           </td>

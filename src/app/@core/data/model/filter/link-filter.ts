@@ -9,5 +9,6 @@ export interface LinkFilter extends DefaultFilter {
   customer: CustomerFilter,
   place: PlaceFilter,
   personType: 'PERSON'|'LEGAL',
+  active?: Boolean,
 
 }

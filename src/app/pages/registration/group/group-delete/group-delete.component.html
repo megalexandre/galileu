@@ -1,0 +1,56 @@
+<div *ngIf="loaded">
+  <form [formGroup]="form" (submit)="submit()">
+    <div class="row">
+      <div class="col-lg-12">
+        <nb-card>
+
+          <nb-card-header>
+            Deletar Preço
+          </nb-card-header>
+
+          <nb-card-body>
+
+            <div class="row mb-3">
+
+              <div class="col-md-6 col-12">
+                <label for="value" class="label">Categoria:</label>
+                <ngx-select-category [category]="this.category.value"  [status]="getStatus('category')" (selectCategory)="selectCategory($event)"></ngx-select-category>
+                <error-message [message]="'Categoria é obrigatório'" [show]="(category.errors?.required && (submmited || this.form.touched))"></error-message>
+              </div>
+
+
+              <div class="col-md-6 col-12">
+                <label for="value" class="label">Valor:</label>
+                <error-message [message]="'Valor é obrigatório'" [show]="(value.errors?.required && (submmited || this.form.touched))"></error-message>
+                <ngx-input-currency  [currency]="this.group.value" (currencyChange)="selectCurrency($event)" [status]="getStatus('value')"></ngx-input-currency>
+              </div>
+
+              <div class="col-12">
+                <label for="name" class="label">Nome:</label>
+                <input id="name" type="text" nbInput fullWidth placeholder="Nome:" formControlName="name"  [status]="getStatus('name')">
+                <error-message [message]="'Nome é obrigatório'" [show]="(name.errors?.required && (submmited || this.form.touched))"></error-message>
+              </div>
+
+            </div>
+
+          </nb-card-body>
+          <nb-card-footer>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" nbButton outline status="basic" (click)="back()">
+                <nb-icon icon="arrow-back-outline"></nb-icon>
+              </button>
+
+              <button type="submit" nbButton outline status="danger">
+                <nb-icon icon="trash-2-outline"></nb-icon>
+              </button>
+            </div>
+
+          </nb-card-footer>
+        </nb-card>
+
+      </div>
+
+    </div>
+  </form>
+</div>

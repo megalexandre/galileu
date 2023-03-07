@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LinkAddComponent } from './link-add/link-add.component';
+import { LinkInactiveComponent } from './link-inactive/link-inactive.component';
 import { LinkListComponent } from './link-list/link-list.component';
+import { LinkViewComponent } from './link-view/link-view.component';
 import { LinkComponent } from './link.component';
 
 const routes: Routes = [
@@ -17,16 +19,14 @@ const routes: Routes = [
       path: 'add',
       component: LinkAddComponent
     },
-     /*
     {
-      path: 'edit',
-      component: CustomerEditComponent
+      path: 'view',
+      component: LinkViewComponent
     },
     {
-      path: 'delete',
-      component: CustomerDeleteComponent
+      path: 'inactive',
+      component: LinkInactiveComponent
     },
-    */
     { path: '', redirectTo: 'list', pathMatch: 'full' },
     { path: '**', redirectTo: 'list' },
     ]

@@ -20,7 +20,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/registration',
       },
       {
-        title: 'Grupos',
+        title: 'Preços',
         link: '/pages/registration/group',
       },
       {

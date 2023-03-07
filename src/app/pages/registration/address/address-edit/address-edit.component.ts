@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from '@model/default/address';
 import { NbToastrService } from '@nebular/theme';
 import { DataService } from 'app/@shared/data.service';
+import { AddressComponent } from '../address.component';
 import { AddressService } from './../address.service';
 
 @Component({
@@ -11,27 +12,29 @@ import { AddressService } from './../address.service';
   templateUrl: './address-edit.component.html',
   styleUrls: ['./address-edit.component.scss']
 })
-export class AddressEditComponent implements OnInit {
-
-  public id: string;
-  public loaded: boolean = false;
-  public address: Address;
-  public form: FormGroup;
-  public submmited: boolean = false;
+export class AddressEditComponent extends AddressComponent implements OnInit {
 
   constructor(
-    private data: DataService,
-    private service: AddressService,
-    private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private toastrService: NbToastrService,
-    ) { }
-
+    public data: DataService,
+    public service: AddressService,
+    public formBuilder: FormBuilder,
+    public activatedRoute: ActivatedRoute,
+    public router: Router,
+    public toastrService: NbToastrService,
+    ) {
+      super(data, formBuilder, activatedRoute, router, service,  toastrService)
+    }
 
   ngOnInit(): void {
-    this.id = this.data.id
+    this.createForm()
+  }
 
+  override createForm(): void {
+    if(!this.data.id){
+      this.back()
+    }
+
+    this.id = this.data.id
     this.service.getById(this.id).subscribe(
       (address: Address)=> {
         this.address = address;
@@ -43,46 +46,18 @@ export class AddressEditComponent implements OnInit {
         this.loaded = true
       }
     )
-
   }
 
-
-  public submit(){
-    this.submmited = true;
-
-    if(this.form.invalid){
-      return
-    }
-
+  override commit(){
     this.service.update(this.form.value).subscribe(
       () => {
         this.toastrService.success(`Sucesso`, `Novo Registro adicionado`)
         this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
       },
-      () =>{
-        this.toastrService.danger(`Erro ao salvar`, `Não foi possivel realizar a ação`)
+      (response) =>{
+        this.toastrService.danger(response.error.detail, `Não foi possivel realizar a ação`)
       }
-
     )
-  }
-
-  public back(){
-    this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
-  }
-
-  public getStatus(value: string): ('success'|'basic'|'danger') {
-
-    if(this.form.get(value).valid && (this.form.get(value).touched || (this.submmited) )){
-      return 'success'
-    } else if (!this.form.get(value).valid &&  (this.form.get(value).touched || (this.submmited))){
-      return 'danger'
-    }
-
-    return 'basic'
-  }
-
-  get name(): AbstractControl {
-    return this.form.get('name')
   }
 
 }

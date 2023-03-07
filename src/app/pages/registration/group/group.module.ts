@@ -12,6 +12,7 @@ import { GroupService } from './group.service';
 import { GroupAddComponent } from './group-add/group-add.component';
 import { GroupEditComponent } from './group-edit/group-edit.component';
 import { ComponentModule } from 'app/component/component.module';
+import { GroupDeleteComponent } from './group-delete/group-delete.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { ComponentModule } from 'app/component/component.module';
     GroupListComponent,
     GroupAddComponent,
     GroupEditComponent,
+    GroupDeleteComponent,
   ],
   providers: [
     GroupService,

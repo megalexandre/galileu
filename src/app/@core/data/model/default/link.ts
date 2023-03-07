@@ -7,4 +7,5 @@ export interface Link {
   group: Group,
   customer: Customer,
   place: Place,
+  active: Boolean,
 }

@@ -1,17 +1,20 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LinkRoutingModule } from './link-routing.module';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbCardModule, NbInputModule, NbButtonModule, NbSpinnerModule, NbIconModule, NbFormFieldModule, NbStepperModule, NbSelectModule } from '@nebular/theme';
+import { NbAccordionModule, NbButtonModule, NbCardModule, NbCheckboxModule, NbFormFieldModule, NbIconModule, NbInputModule, NbRadioModule, NbSelectModule, NbSpinnerModule, NbStepperModule } from '@nebular/theme';
 import { AcalModule } from 'app/@acal/acal.module';
 import { PipeModule } from 'app/@pipe/pipe.module';
-import { NgxMaskModule } from 'ngx-mask';
-import { LinkComponent } from './link.component';
-import { LinkListComponent } from './link-list/link-list.component';
-import { LinkService } from './link.service';
-import { LinkAddComponent } from './link-add/link-add.component';
 import { ComponentModule } from 'app/component/component.module';
+import { NgxMaskModule } from 'ngx-mask';
+import { LinkAddComponent } from './link-add/link-add.component';
+import { LinkFilterComponent } from './link-filter/link-filter.component';
+import { LinkListComponent } from './link-list/link-list.component';
 import { LinkReviewComponent } from './link-review/link-review.component';
+import { LinkRoutingModule } from './link-routing.module';
+import { LinkViewComponent } from './link-view/link-view.component';
+import { LinkComponent } from './link.component';
+import { LinkService } from './link.service';
+import { LinkInactiveComponent } from './link-inactive/link-inactive.component';
 
 @NgModule({
 
@@ -32,12 +35,17 @@ import { LinkReviewComponent } from './link-review/link-review.component';
     NbStepperModule,
     ComponentModule,
     NbSelectModule,
+    NbAccordionModule,
+    NbRadioModule,
   ],
   declarations: [
     LinkComponent,
     LinkListComponent,
     LinkAddComponent,
+    LinkViewComponent,
     LinkReviewComponent,
+    LinkFilterComponent,
+    LinkInactiveComponent,
   ],
   providers: [
     LinkService

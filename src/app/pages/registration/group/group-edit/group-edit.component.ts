@@ -1,3 +1,4 @@
+import { GroupComponent } from './../group.component';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,22 +12,18 @@ import { GroupService } from '../group.service';
   templateUrl: './group-edit.component.html',
   styleUrls: ['./group-edit.component.scss']
 })
-export class GroupEditComponent implements OnInit {
-
-  public id: string;
-  public loaded: boolean = false;
-  public group: Group;
-  public submmited: boolean = false;
-  form: FormGroup;
+export class GroupEditComponent extends GroupComponent implements OnInit {
 
   constructor(
-    private formBuilder: FormBuilder,
-    private data: DataService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private service: GroupService,
-    private toastrService: NbToastrService,
-    ) { }
+    public formBuilder: FormBuilder,
+    public data: DataService,
+    public activatedRoute: ActivatedRoute,
+    public router: Router,
+    public service: GroupService,
+    public toastrService: NbToastrService,
+    ) {
+      super(formBuilder, data, activatedRoute, router, service, toastrService)
+    }
 
   ngOnInit(): void {
 
@@ -52,58 +49,16 @@ export class GroupEditComponent implements OnInit {
 
   }
 
-  selectCurrency(value: number){
-    this.value.setValue(value)
-  }
-
-  public selectCategory(category: Category){
-    this.category.value(category)
-  }
-
-  public submit(){
-    this.submmited = true;
-
-    if(this.form.invalid){
-      return
-    }
-
+  override commit(): void {
     this.service.update(this.form.value).subscribe(
       () => {
-        this.toastrService.success(`Sucesso`, `Novo Registro adicionado`)
+        this.toastrService.success(`Sucesso`, `Registro Editado`)
         this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
       },
-      () =>{
-        this.toastrService.danger(`Erro ao salvar`, `Não foi possivel realizar a ação`)
+      (response) =>{
+        this.toastrService.danger(response.error.detail, `Não foi possivel realizar a ação`)
       }
-
     )
-  }
-
-  public back(){
-    this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
-  }
-
-  public getStatus(value: string): ('success'|'basic'|'danger') {
-
-    if(this.form.get(value).valid && (this.form.get(value).touched || (this.submmited) )){
-      return 'success'
-    } else if (!this.form.get(value).valid &&  (this.form.get(value).touched || (this.submmited))){
-      return 'danger'
-    }
-
-    return 'basic'
-  }
-
-  get name(): AbstractControl {
-    return this.form.get('name')
-  }
-
-  get category(): AbstractControl {
-    return this.form.get('category')
-  }
-
-  get value(): AbstractControl {
-    return this.form.get('value')
   }
 
 }

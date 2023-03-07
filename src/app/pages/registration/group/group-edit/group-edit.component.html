@@ -5,7 +5,7 @@
         <nb-card>
 
           <nb-card-header>
-            Editar Grupo
+            Editar Preço
           </nb-card-header>
 
           <nb-card-body>
@@ -14,7 +14,7 @@
 
               <div class="col-md-6 col-12">
                 <label for="value" class="label">Categoria:</label>
-                <ngx-select-category [category]="this.category.value" (selectCategory)="selectCategory($event)"></ngx-select-category>
+                <ngx-select-category [category]="this.category.value" [status]="getStatus('category')" (selectCategory)="selectCategory($event)"></ngx-select-category>
                 <error-message [message]="'Categoria é obrigatório'" [show]="(category.errors?.required && (submmited || this.form.touched))"></error-message>
               </div>
 
@@ -40,9 +40,8 @@
               <button type="button" nbButton outline status="basic" (click)="back()">
                 <nb-icon icon="arrow-back-outline"></nb-icon>
               </button>
-
-              <button type="submit" nbButton outline status="success">
-                <nb-icon icon="save-outline"></nb-icon>
+              <button type="submit" nbButton outline status="warning">
+                <nb-icon icon="edit-2-outline"></nb-icon>
               </button>
             </div>
 

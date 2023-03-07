@@ -5,4 +5,6 @@ export interface Place {
   number: number,
   letter: string,
   address: Address,
+  hasHydrometer: boolean,
+  other: string,
 }

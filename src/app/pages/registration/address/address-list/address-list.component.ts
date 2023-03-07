@@ -46,6 +46,7 @@ export class AddressListComponent implements OnInit {
   }
 
   public remove(id: string){
+    this.data.setId = id
     this.router.navigate(['../delete'],{relativeTo: this.activatedRoute})
   }
 

@@ -6,7 +6,7 @@
         <ng-template #usuario>Usuário</ng-template>
 
         <hr/>
-        <ngx-select-user (selectCustomer)="selectCustomer($event)"></ngx-select-user>
+          <ngx-select-user (selectCustomer)="selectCustomer($event)"></ngx-select-user>
         <hr/>
 
         <div class="d-flex justify-content-between">
@@ -16,20 +16,33 @@
       </nb-step>
 
       <nb-step [label]="endereco">
-        <ng-template #endereco>Endereço</ng-template>
+        <ng-template #endereco>Endereço de serviço</ng-template>
 
         <hr/>
-          <ngx-select-place (selectPlace)="selectPlace($event)" ></ngx-select-place>
+          <ngx-select-place [title]="'Endereço de serviço'" (selectPlace)="selectPlace($event)" ></ngx-select-place>
         <hr/>
 
         <div class="d-flex justify-content-between">
           <button nbButton nbStepperPrevious (click)="index = 'usuario'">Voltar</button>
+          <button nbButton nbStepperNext [disabled]="place.invalid" (click)="index = 'enderecoDeCorrepondencia'">Avançar</button>
+        </div>
+      </nb-step>
+
+      <nb-step [label]="enderecoDeCorrepondencia">
+        <ng-template #enderecoDeCorrepondencia>Endereço correspôndencia</ng-template>
+
+        <hr/>
+          <ngx-select-place [title]="'Endereço de correspôndencia'" (selectPlace)="selectMailPlace($event)" ></ngx-select-place>
+        <hr/>
+
+        <div class="d-flex justify-content-between">
+          <button nbButton nbStepperPrevious (click)="index = 'endereco'">Voltar</button>
           <button nbButton nbStepperNext [disabled]="place.invalid" (click)="index = 'categoria'">Avançar</button>
         </div>
       </nb-step>
 
       <nb-step [label]="categoria">
-         <ng-template #categoria>Categoria</ng-template>
+         <ng-template #categoria>Preço</ng-template>
 
         <hr/>
           <ngx-select-group (selectGroup)="selectGroup($event)" ></ngx-select-group>
@@ -44,7 +57,9 @@
       <nb-step [label]="review">
         <ng-template #review>Revisão</ng-template>
 
-        <ngx-link-review [link]="this.form.value" *ngIf="index === 'review'"></ngx-link-review>
+        <hr/>
+          <ngx-link-review [link]="this.form.value" *ngIf="index === 'review'"></ngx-link-review>
+        <hr/>
 
         <div class="d-flex justify-content-between">
           <button nbButton nbStepperPrevious (click)="index='endereco'">Voltar</button>

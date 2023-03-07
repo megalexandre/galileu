@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Place } from '@model/default/place';
 import { NbToastrService } from '@nebular/theme';
 import { DataService } from 'app/@shared/data.service';
+import { PlaceComponent } from '../place.component';
 import { PlaceService } from './../place.service';
 
 @Component({
@@ -11,25 +12,27 @@ import { PlaceService } from './../place.service';
   templateUrl: './place-edit.component.html',
   styleUrls: ['./place-edit.component.scss']
 })
-export class PlaceEditComponent implements OnInit {
-
-  public id: string;
-  public loaded: boolean = false;
-  public place: Place;
-  public form: FormGroup;
-  public submmited: boolean = false;
+export class PlaceEditComponent extends PlaceComponent implements OnInit {
 
   constructor(
-    private data: DataService,
-    private service: PlaceService,
-    private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private toastrService: NbToastrService,
-    ) { }
-
+    public data: DataService,
+    public service: PlaceService,
+    public formBuilder: FormBuilder,
+    public activatedRoute: ActivatedRoute,
+    public router: Router,
+    public toastrService: NbToastrService,
+    ) {
+      super(data, formBuilder, activatedRoute, router, service, toastrService)
+  }
 
   ngOnInit(): void {
+    this.createForm()
+  }
+
+  createForm(): void {
+    if(!this.data.id){
+      this.back()
+    }
     this.id = this.data.id
 
     this.service.getById(this.id).subscribe(
@@ -38,50 +41,28 @@ export class PlaceEditComponent implements OnInit {
 
         this.form = this.formBuilder.group({
           id: [place.id, Validators.required],
+          number: [place.number, Validators.required],
+          letter: [place.letter, Validators.required],
+          address: [place.address, Validators.required],
+          hasHydrometer: [place.hasHydrometer],
+          other: [place.other],
         })
         this.loaded = true
       }
     )
-
   }
 
-
-  public submit(){
-    this.submmited = true;
-
-    if(this.form.invalid){
-      return
-    }
-
+  commit(): void {
     this.service.update(this.form.value).subscribe(
       () => {
         this.toastrService.success(`Sucesso`, `Novo Registro adicionado`)
         this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
       },
-      () =>{
-        this.toastrService.danger(`Erro ao salvar`, `Não foi possivel realizar a ação`)
+      (response) =>{
+        this.toastrService.danger(response.error.detail, `Não foi possivel realizar a ação`)
       }
 
     )
-  }
-
-  public back(){
-    this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
-  }
-
-  public getStatus(value: string): ('success'|'basic'|'danger') {
-
-    if(this.form.get(value).valid && (this.form.get(value).touched || (this.submmited) )){
-      return 'success'
-    } else if (!this.form.get(value).valid &&  (this.form.get(value).touched || (this.submmited))){
-      return 'danger'
-    }
-
-    return 'basic'
-  }
-
-  get name(): AbstractControl {
-    return this.form.get('name')
   }
 
 }

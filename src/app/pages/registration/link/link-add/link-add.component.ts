@@ -33,6 +33,7 @@ export class LinkAddComponent implements OnInit {
       customer: [null, Validators.required],
       group: [null, Validators.required],
       place: [null, Validators.required],
+      mailPlace: [null, Validators.required],
     })
   }
 
@@ -42,6 +43,10 @@ export class LinkAddComponent implements OnInit {
 
   public selectPlace(place: Place){
     this.place.setValue(place)
+  }
+
+  public selectMailPlace(place: Place){
+    this.mailPlace.setValue(place)
   }
 
   public selectGroup(group: Group){
@@ -60,10 +65,9 @@ export class LinkAddComponent implements OnInit {
         this.toastrService.success(`Sucesso`, `Novo Registro adicionado`)
         this.router.navigate(['../list'],{relativeTo: this.activatedRoute})
       },
-      () =>{
-        this.toastrService.danger(`Erro ao salvar`, `Não foi possivel realizar a ação`)
+      (response) =>{
+        this.toastrService.danger(response.error.detail, `Não foi possivel realizar a ação`)
       }
-
     )
   }
 
@@ -94,6 +98,8 @@ export class LinkAddComponent implements OnInit {
     return this.form.get('group')
   }
 
-
+  get mailPlace(): AbstractControl {
+    return this.form.get('mailPlace')
+  }
 
 }

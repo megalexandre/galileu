@@ -4,12 +4,42 @@
   </nb-card-header>
 
   <nb-card-body>
-    <p>
-      Uma ligação para o usúario <b>{{link.customer.name}}</b> de {{link.customer.personType === 'PERSON' ? 'C.P.F:': 'C.N.P.J:'}}
-      número <b>{{link.customer.document | identification }}</b>,
-      no endereço <b>{{link.place.address.name}}</b>, no número: <b>{{link.place.number}}</b> de letra <b>{{link.place.letter}}</b>,
-      na categoria: <b>{{link.group.category | category}}</b>, no grupo <b>{{link.group.name}}</b> no valor de <b>{{link.group.value | currency}}</b>
-    </p>
+
+    <nb-accordion multi>
+
+      <nb-accordion-item #customer collapsed="false">
+       <nb-accordion-item-header>Usuário</nb-accordion-item-header>
+       <nb-accordion-item-body>
+        <b>{{link.customer.name}}</b><br/>
+        <b>{{link.customer.personType === 'PERSON' ? 'C.P.F:': 'C.N.P.J:'}}</b> número <b>{{link.customer.document | identification }}</b>
+       </nb-accordion-item-body>
+      </nb-accordion-item>
+
+      <nb-accordion-item collapsed="false">
+        <nb-accordion-item-header>Endereço</nb-accordion-item-header>
+        <nb-accordion-item-body>
+          De serviço:<br/>
+
+          <b>{{link.place.address.name}}</b>, no número: <b>{{link.place.number}}</b> de complemento <b>{{link.place.letter}}</b><br/>
+
+          <hr>
+
+          De correspondência<br/>
+          <b>{{link.place.address.name}}</b>, no número: <b>{{link.place.number}}</b> de letra <b>{{link.place.letter}}</b>
+
+        </nb-accordion-item-body>
+       </nb-accordion-item>
+
+       <nb-accordion-item collapsed="false">
+        <nb-accordion-item-header>Preço</nb-accordion-item-header>
+        <nb-accordion-item-body>
+          Categoria: <b>{{link.group.category | category}}</b><br/>
+          Grupo <b>{{link.group.name}}</b><br/>
+          Valor <b>{{link.group.value | currency}}</b><br/>
+        </nb-accordion-item-body>
+       </nb-accordion-item>
+
+    </nb-accordion>
 
   </nb-card-body>
 

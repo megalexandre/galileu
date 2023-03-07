@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
-import DateValidator from 'app/@validator/date.validator';
-import DocumentValidator from 'app/@validator/document.validator';
 import { CustomerService } from './customer.service';
 
 @Component({

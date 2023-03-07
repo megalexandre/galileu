@@ -17,6 +17,10 @@ export class LinkService extends DefaultService<Link, LinkFilter> {
     super(http)
   }
 
+  public inactivate(id: String): Observable<any> {
+    return this.http.delete<Link>(`${this.env}/inactive/${id}`);
+  }
+
   public save(link: Link): Observable<Link>{
     return this.http.post<Link>(`${this.env}`, {
       customerId: link.customer.id,
