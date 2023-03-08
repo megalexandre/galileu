@@ -7,5 +7,8 @@ export interface Link {
   group: Group,
   customer: Customer,
   place: Place,
+  mailPlace: Place,
   active: Boolean,
+  startedAt: Date,
+  finishedAt: Date,
 }

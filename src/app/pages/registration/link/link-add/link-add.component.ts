@@ -28,7 +28,6 @@ export class LinkAddComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     this.form = this.formBuilder.group({
       customer: [null, Validators.required],
       group: [null, Validators.required],

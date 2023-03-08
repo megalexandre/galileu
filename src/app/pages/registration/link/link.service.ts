@@ -26,7 +26,9 @@ export class LinkService extends DefaultService<Link, LinkFilter> {
       customerId: link.customer.id,
       groupId: link.group.id,
       placeId: link.place.id,
-    });
+      mailPlaceId: link.mailPlace.id
+      }
+    );
   }
 
 }

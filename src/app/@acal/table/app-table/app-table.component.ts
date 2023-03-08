@@ -13,6 +13,9 @@ export class AppTableComponent {
   @Input()
   tableStriped: boolean = true
 
+  @Input()
+  tableBordered: boolean = false
+
   constructor() { }
 
 }

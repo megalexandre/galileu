@@ -123,7 +123,7 @@
 
       <tbody >
         <tr *ngFor="let item of page?.content" [ngClass]="{'table-danger': !item.active , 'table-light': item.active}">
-          <td class="align-middle">{{item.customer.name + item.active}}</td>
+          <td class="align-middle">{{item.customer.name}}</td>
           <td class="align-middle">{{item.customer.document | identification}}</td>
           <td class="align-middle"><b>{{item.group.category | category}}</b></td>
           <td class="align-middle">{{item.group.name}}</td>

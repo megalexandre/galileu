@@ -1,7 +1,7 @@
 <nb-card>
 
   <nb-card-body>
-    <ngx-link-review [link]="link"></ngx-link-review>
+    <ngx-link-review *ngIf="link" [link]="link"></ngx-link-review>
   </nb-card-body>
 
   <nb-card-footer>
