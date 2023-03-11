@@ -1,5 +1,5 @@
-import { Dashboard } from './../../../@core/data/model/default/dashboard';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Dashboard } from '@model/default/dashboard';
 import { HomepageService } from '../homepage.service';
 
 @Component({
@@ -7,24 +7,9 @@ import { HomepageService } from '../homepage.service';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent  {
 
+  @Input()
   public dashboard: Dashboard
-  public loaded: boolean = false
-
-  constructor(private service: HomepageService) {
-
-  }
-
-  ngOnInit(): void {
-    this.service.get().subscribe(
-      (dashboard) =>{
-        this.dashboard = dashboard
-        this.loaded = true
-      }
-    )
-  }
-
-
 
 }

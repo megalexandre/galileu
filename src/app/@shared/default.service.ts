@@ -17,7 +17,7 @@ export abstract class DefaultService <D, F> {
   }
 
   public delete(id: string): Observable<D>{
-    return this.http.delete<D>(`${this.env+'/delete'}/${id}`);
+    return this.http.delete<D>(`${this.env}/${id}`);
   }
 
   public save(d: D): Observable<D>{

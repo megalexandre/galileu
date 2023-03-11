@@ -1,9 +1,13 @@
-import { NbInputModule, NbButtonModule, NbIconModule } from '@nebular/theme';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppTableComponent } from './table/app-table/app-table.component';
-import { AppTableFooterComponent } from './table/app-table-footer/app-table-footer.component';
+import { NgModule } from '@angular/core';
+import { NbButtonModule, NbIconModule } from '@nebular/theme';
+import { EditButtonComponent } from './edit-button/edit-button.component';
 import { ErrorMessageComponent } from './form/error-message/error-message.component';
+import { AppTableFooterComponent } from './table/app-table-footer/app-table-footer.component';
+import { AppTableComponent } from './table/app-table/app-table.component';
+import { DeleteButtonComponent } from './delete-button/delete-button.component';
+import { AddButtonComponent } from './add-button/add-button.component';
+import { DateReferenceComponent } from './date-reference/date-reference.component';
 
 @NgModule({
   imports: [
@@ -15,11 +19,18 @@ import { ErrorMessageComponent } from './form/error-message/error-message.compon
     AppTableComponent,
     AppTableFooterComponent,
     ErrorMessageComponent,
+    EditButtonComponent,
+    DeleteButtonComponent,
+    AddButtonComponent,
+    DateReferenceComponent,
   ],
   exports:[
     AppTableComponent,
     AppTableFooterComponent,
     ErrorMessageComponent,
+    EditButtonComponent,
+    DeleteButtonComponent,
+    AddButtonComponent
   ]
 })
 export class AcalModule { }

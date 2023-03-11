@@ -9,27 +9,27 @@ const routes: Routes = [
     children: [
       {
         path: 'customer',
-        loadChildren: () => import('./customer/customer.module')
+        loadChildren: () => import('../registration/customer/customer.module')
           .then(m => m.CustomerModule),
       },
       {
         path: 'group',
-        loadChildren: () => import('./group/group.module')
+        loadChildren: () => import('../registration/group/group.module')
           .then(m => m.GroupModule),
       },
       {
         path: 'address',
-        loadChildren: () => import('./address/address.module')
+        loadChildren: () => import('../registration/address/address.module')
           .then(m => m.AddressModule),
       },
       {
         path: 'place',
-        loadChildren: () => import('./place/place.module')
+        loadChildren: () => import('../registration/place/place.module')
           .then(m => m.PlaceModule),
       },
       {
         path: 'link',
-        loadChildren: () => import('./link/link.module')
+        loadChildren: () => import('../registration/link/link.module')
           .then(m => m.LinkModule),
       },
     { path: '', redirectTo: 'customer', pathMatch: 'full' },

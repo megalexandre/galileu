@@ -41,7 +41,8 @@
               </p>
               <div class="input-group">
                 <input type="text" placeholder="Enter your name" class="form-control" formControlName="firstCtrl"
-                       [ngClass]="{'form-control-danger': firstForm.invalid && (firstForm.dirty || firstForm.touched)}">
+                       [ngClass]="{'form-control-danger': firstForm.invalid && (firstForm.dirty || firstForm.touched)}"
+                       >
               </div>
               <button nbButton nbStepperNext>next</button>
             </form>

@@ -10,7 +10,6 @@ import { CustomerService } from '../customer.service';
 @Component({
   selector: 'ngx-customer-add',
   templateUrl: './customer-add.component.html',
-  styleUrls: ['./customer-add.component.scss']
 })
 export class CustomerAddComponent extends CustomerComponent implements OnInit{
 

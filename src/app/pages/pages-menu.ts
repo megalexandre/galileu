@@ -38,6 +38,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Água',
+    icon: 'droplet-outline',
+    children: [
+      {
+        title: 'Hidrômetro',
+        link: '/pages/water/hydrometer',
+      },
+      {
+        title: 'Qualidade',
+        link: '/pages/water/quality',
+      },
+    ],
+  },
+  {
     title: 'Estratégico',
     group: true,
   },

@@ -1,4 +1,4 @@
-export const baseUrl = 'http://localhost:8080/';
+export const baseUrl = 'https://localhost:443/';
 
 export const environment = {
   production: false,
@@ -10,6 +10,7 @@ export const environment = {
     logout: `auth/logout`,
   },
 
+  quality: `${baseUrl + 'quality'}`,
   customer: `${baseUrl + 'customer'}`,
   address: `${baseUrl + 'address'}`,
   group: `${baseUrl + 'group'}`,

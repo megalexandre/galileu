@@ -12,7 +12,6 @@ import { CustomerService } from '../customer.service';
 @Component({
   selector: 'ngx-customer-delete',
   templateUrl: './customer-delete.component.html',
-  styleUrls: ['./customer-delete.component.scss']
 })
 export class CustomerDeleteComponent extends CustomerComponent implements OnInit  {
 

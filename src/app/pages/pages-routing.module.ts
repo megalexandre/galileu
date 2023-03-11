@@ -19,14 +19,14 @@ const routes: Routes = [{
         .then(m => m.FinancialModule),
     },
     {
-      path: 'operational',
-      loadChildren: () => import('./operational/operational.module')
-        .then(m => m.OperationalModule),
-    },
-    {
       path: 'registration',
       loadChildren: () => import('./registration/registration.module')
         .then(m => m.RegistrationModule),
+    },
+    {
+      path: 'water',
+      loadChildren: () => import('./water/water.module')
+        .then(m => m.WaterModule),
     },
     {
       path: 'layout',
